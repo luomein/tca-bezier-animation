@@ -80,32 +80,24 @@ struct Feature: ReducerProtocol {
         self.idProvider = idProvider
     }
     struct State: Equatable {
-//        struct StateParameter: Equatable{
-//
-//            var totalStep: Double = 10.0
-//            var timerSpeed: Double = 50.0
-//            var timerSpeedMax : Double{
-//                100.0
-//            }
-//        }
-//        var parameter = StateParameter()
-//        var timerID = UUID()
-//        var timerOn : Bool = true
-//        var timerCarry = 0
-//        var timerProgress : Double = 0.0
-//        var timerProgressUnit : Double {1.0}
-//
-//        var t : Double { timerProgress / Double(parameter.totalStep )}
+        struct DisplayOptions: OptionSet {
+            let rawValue: Int
+            
+            static let bezierOrderLayer1    = DisplayOptions(rawValue: 1 << 0)
+            static let bezierOrderLayer2  = DisplayOptions(rawValue: 1 << 1)
+            static let bezierOrderLayer3   = DisplayOptions(rawValue: 1 << 2)
+            static let controlPoints   = DisplayOptions(rawValue: 1 << 3)
+        }
         var timer = TimerReducer.State()
         
-        var controlPoints = BezierOrderLayerReducer.State(allPtArray: IdentifiedArray(uniqueElements: [ IdentifiedCGPointArray(ptArray: [CGPoint(x: 10.0, y: 10.0)] ) ,
-                                                                                                        IdentifiedCGPointArray(ptArray: [CGPoint(x: 100.0, y: 150.0)] ) ,
-                                                                                                        IdentifiedCGPointArray(ptArray: [CGPoint(x: 200.0, y: 200.0)] ),
-                                                                                                        IdentifiedCGPointArray(ptArray: [CGPoint(x: 320.0, y: 150.0)])
-                                                                                                      ] ))
-        var bezierOrderLayer1 = BezierOrderLayerReducer.State()
-        var bezierOrderLayer2 = BezierOrderLayerReducer.State()
-        var bezierOrderLayer3 = BezierOrderLayerReducer.State()
+        var controlPoints = BezierOrderLayerReducer.State(expandingDrawingID: .controlPoints, allPtArray: IdentifiedArray(uniqueElements: [ IdentifiedCGPointArray(ptArray: [CGPoint(x: 10.0, y: 10.0)] ) ,
+                                                                                                                                            IdentifiedCGPointArray(ptArray: [CGPoint(x: 100.0, y: 150.0)] ) ,
+                                                                                                                                            IdentifiedCGPointArray(ptArray: [CGPoint(x: 200.0, y: 200.0)] ),
+                                                                                                                                            IdentifiedCGPointArray(ptArray: [CGPoint(x: 320.0, y: 150.0)])
+                                                                                                                                          ] ))
+        var bezierOrderLayer1 = BezierOrderLayerReducer.State( expandingDrawingID: .bezierOrderLayer1)
+        var bezierOrderLayer2 = BezierOrderLayerReducer.State( expandingDrawingID: .bezierOrderLayer2)
+        var bezierOrderLayer3 = BezierOrderLayerReducer.State( expandingDrawingID: .bezierOrderLayer3)
     }
     
     enum Action: Equatable {
@@ -159,14 +151,47 @@ struct Feature: ReducerProtocol {
 //                return EffectTask(value: .calculateNewPoint)
             
             
-            case .jointControlPointsReducer(_):
-                return .none
-            case .jointBezierOrderLayer1Reducer(_):
-                return .none
-            case .jointBezierOrderLayer2Reducer(_):
-                return .none
-            case .jointBezierOrderLayer3Reducer(_):
-                return .none
+            case .jointControlPointsReducer(let sideEffect):
+                switch sideEffect{
+                case .expandingDrawingID(let value):
+                    state.bezierOrderLayer1.expandingDrawingOptions = false
+                    state.bezierOrderLayer2.expandingDrawingOptions = false
+                    state.bezierOrderLayer3.expandingDrawingOptions = false
+                    return .none
+                default:
+                    return .none
+                }
+                
+            case .jointBezierOrderLayer1Reducer(let sideEffect):
+                switch sideEffect{
+                                case .expandingDrawingID(let value):
+                                    state.controlPoints.expandingDrawingOptions = false
+                                    state.bezierOrderLayer2.expandingDrawingOptions = false
+                                    state.bezierOrderLayer3.expandingDrawingOptions = false
+                                    return .none
+                                default:
+                                    return .none
+                                }
+            case .jointBezierOrderLayer2Reducer(let sideEffect):
+                switch sideEffect{
+                                case .expandingDrawingID(let value):
+                                    state.bezierOrderLayer1.expandingDrawingOptions = false
+                                    state.controlPoints.expandingDrawingOptions = false
+                                    state.bezierOrderLayer3.expandingDrawingOptions = false
+                                    return .none
+                                default:
+                                    return .none
+                                }
+            case .jointBezierOrderLayer3Reducer(let sideEffect):
+                switch sideEffect{
+                                case .expandingDrawingID(let value):
+                                    state.bezierOrderLayer1.expandingDrawingOptions = false
+                                    state.bezierOrderLayer2.expandingDrawingOptions = false
+                                    state.controlPoints.expandingDrawingOptions = false
+                                    return .none
+                                default:
+                                    return .none
+                                }
             case .jointTimerReducer(let timerSideEffect):
                 switch timerSideEffect{
                 case .timerProgressUpdated:

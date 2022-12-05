@@ -11,6 +11,7 @@ import ComposableArchitecture
 
 struct BezierOrderLayerReducer:ReducerProtocol {
     struct State: Equatable {
+        
         struct DrawingOptions: Equatable{
             var pointSize: Double = 15.0
             var pointColor = Color.black
@@ -20,6 +21,8 @@ struct BezierOrderLayerReducer:ReducerProtocol {
             var colorReferenceLine = Color.yellow
             var colorTrace = Color.blue
         }
+        var expandingDrawingOptions = false
+        var expandingDrawingID : Feature.State.DisplayOptions
         var drawingOptions = DrawingOptions()
         var allPtArray: IdentifiedArray<UUID,IdentifiedCGPointArray> = []
         var referencePoints: [CGPoint] = []
@@ -36,17 +39,28 @@ struct BezierOrderLayerReducer:ReducerProtocol {
         case colorReferenceLine(Color)
         case colorTrace(Color)
         case draw(Bool)
+        case expandingDrawingOptions(Bool)
+        case expandingDrawingID(Feature.State.DisplayOptions)
     }
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action{
+        case .expandingDrawingID:
+            return .none
+        case .expandingDrawingOptions(let value):
+            state.expandingDrawingOptions = value
+            return EffectTask(value: .expandingDrawingID(state.expandingDrawingID))
         case .draw(let value):
             state.drawingOptions.draw = value
+            state.drawingOptions.drawTrace = value
+            state.drawingOptions.drawReferenceLine = value
             return .none
         case .drawReferenceLine(let value):
             state.drawingOptions.drawReferenceLine = value
+            state.drawingOptions.draw = value
             return .none
         case .drawTrace(let value):
             state.drawingOptions.drawTrace = value
+            state.drawingOptions.draw = value
             return .none
         case .drawPointSize(let value):
             state.drawingOptions.pointSize = value

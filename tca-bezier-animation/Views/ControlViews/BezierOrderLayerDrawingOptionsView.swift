@@ -24,7 +24,7 @@ struct BezierOrderLayerDrawingOptionsView : View {
     let displayOptions : DisplayOptions
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            DisclosureGroup {
+            DisclosureGroup(isExpanded: viewStore.binding(get: \.expandingDrawingOptions, send: {.expandingDrawingOptions($0)}))  {
                 VStack{
                     if displayOptions.contains(.pointSize){
                         HStack{
@@ -36,11 +36,12 @@ struct BezierOrderLayerDrawingOptionsView : View {
                         }
                     }
                     if displayOptions.contains(.drawReferenceLine){
-                        
-                        ColorPicker(selection: viewStore.binding(get: \.drawingOptions.colorReferenceLine, send: {.colorReferenceLine($0)})) {
-                            HStack{
+                        HStack{
+                            
+                            Toggle(isOn: viewStore.binding(get: \.drawingOptions.drawReferenceLine, send: {.drawReferenceLine($0)}), label: {EmptyView()})
+                                .frame(width: 80)
+                            ColorPicker(selection: viewStore.binding(get: \.drawingOptions.colorReferenceLine, send: {.colorReferenceLine($0)})) {
                                 
-                                Toggle(isOn: viewStore.binding(get: \.drawingOptions.drawReferenceLine, send: {.drawReferenceLine($0)}), label: {EmptyView()})
                                 Text("Reference Line")
                                     .minimumScaleFactor(0.01)
                                     .lineLimit(1)
@@ -49,10 +50,12 @@ struct BezierOrderLayerDrawingOptionsView : View {
                         }
                     }
                     if displayOptions.contains(.drawTrace){
-                        ColorPicker( selection: viewStore.binding(get: \.drawingOptions.colorTrace, send: {.colorTrace($0)}))
-                        {
-                            HStack{
-                                Toggle(isOn: viewStore.binding(get: \.drawingOptions.drawTrace, send: {.drawTrace($0)}), label: {EmptyView()})
+                        HStack{
+                            Toggle(isOn: viewStore.binding(get: \.drawingOptions.drawTrace, send: {.drawTrace($0)}), label: {EmptyView()})
+                                .frame(width: 80)
+                            ColorPicker( selection: viewStore.binding(get: \.drawingOptions.colorTrace, send: {.colorTrace($0)}))
+                            {
+                                
                                 Text("Trace")
                                     .minimumScaleFactor(0.01)
                                     .lineLimit(1)
@@ -62,9 +65,11 @@ struct BezierOrderLayerDrawingOptionsView : View {
                     }
                 }
             } label: {
+                HStack{
+                    Toggle(isOn: viewStore.binding(get: \.drawingOptions.draw, send: {.draw($0)}), label: {EmptyView()})
+                        .frame(width: 80)
                 ColorPicker(selection: viewStore.binding(get: \.drawingOptions.pointColor, send: {.pointColor($0)})){
-                    HStack{
-                        Toggle(isOn: viewStore.binding(get: \.drawingOptions.draw, send: {.draw($0)}), label: {EmptyView()})
+                    
                         Text(title)
                             .minimumScaleFactor(0.01)
                             .lineLimit(1)
