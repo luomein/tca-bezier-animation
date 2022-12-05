@@ -26,6 +26,7 @@ struct DrawingOptionsSectionView: View {
                     BezierOrderLayerDrawingOptionsView(store: store.scope(state: \.bezierOrderLayer1, action: {.jointBezierOrderLayer1Reducer($0)}), title: "Bezier 1st Order", displayOptions: .all)
                     BezierOrderLayerDrawingOptionsView(store: store.scope(state: \.bezierOrderLayer2, action: {.jointBezierOrderLayer2Reducer($0)}), title: "Bezier 2st Order", displayOptions: .all)
                     BezierOrderLayerDrawingOptionsView(store: store.scope(state: \.bezierOrderLayer3, action: {.jointBezierOrderLayer3Reducer($0)}), title: "Bezier 3st Order", displayOptions: .all)
+                    Spacer()
                 }
                 
             }

@@ -18,6 +18,7 @@ struct ControlView : View {
                 PointSectionView(store: store)
                 TimerParameterSectionView(store: store.scope(state: \.timer, action: {.jointTimerReducer($0)}))
                 DrawingOptionsSectionView(store: store)
+                
             }
         }
     }
