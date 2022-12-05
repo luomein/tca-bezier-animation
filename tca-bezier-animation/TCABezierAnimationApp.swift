@@ -9,7 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 
 @main
-struct labPlaygroundApp: App {
+struct TCABezierAnimationApp: App {
     
 
     var body: some Scene {

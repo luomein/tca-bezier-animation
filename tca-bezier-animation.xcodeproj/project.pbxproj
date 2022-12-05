@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		88009984293A2D9E007B85D0 /* labPlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88009983293A2D9E007B85D0 /* labPlaygroundApp.swift */; };
+		88009984293A2D9E007B85D0 /* TCABezierAnimationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */; };
 		88009988293A2D9F007B85D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88009987293A2D9F007B85D0 /* Assets.xcassets */; };
 		8800998B293A2D9F007B85D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */; };
 		880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 880099B3293A2E17007B85D0 /* ComposableArchitecture */; };
@@ -38,7 +38,7 @@
 
 /* Begin PBXFileReference section */
 		88009980293A2D9E007B85D0 /* tca-bezier-animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tca-bezier-animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		88009983293A2D9E007B85D0 /* labPlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = labPlaygroundApp.swift; sourceTree = "<group>"; };
+		88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TCABezierAnimationApp.swift; sourceTree = "<group>"; };
 		88009987293A2D9F007B85D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		88009995293A2D9F007B85D0 /* tca-bezier-animationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tca-bezier-animationTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +99,7 @@
 			children = (
 				8897BD53293D784A007E8FB2 /* TCA */,
 				880099BB293AC725007B85D0 /* Views */,
-				88009983293A2D9E007B85D0 /* labPlaygroundApp.swift */,
+				88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */,
 				88009987293A2D9F007B85D0 /* Assets.xcassets */,
 				88009989293A2D9F007B85D0 /* Preview Content */,
 			);
@@ -283,7 +283,7 @@
 				880099BA293AC6D3007B85D0 /* ContainerView.swift in Sources */,
 				8897BD55293D7860007E8FB2 /* BezierOrderLayerReducer.swift in Sources */,
 				880099C7293CADCF007B85D0 /* DrawingOptionsSectionView.swift in Sources */,
-				88009984293A2D9E007B85D0 /* labPlaygroundApp.swift in Sources */,
+				88009984293A2D9E007B85D0 /* TCABezierAnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
