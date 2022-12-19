@@ -56,13 +56,19 @@ struct MultiLayerBezierCurveView: View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack{
                 
-                //reference line
-                //                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier1st, referenceTimeSeries: viewStore.controlPoints)
-                //                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier2st, referenceTimeSeries: viewStore.bezier1st.trace)
-                //                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier3st, referenceTimeSeries: viewStore.bezier2st.trace)
                 
+#if LAB
                 //special effect
                 MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier3st, referenceTimeSeries: viewStore.bezier2st.trace)
+                
+#else
+                //reference line
+                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier1st, referenceTimeSeries: viewStore.controlPoints)
+                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier2st, referenceTimeSeries: viewStore.bezier1st.trace)
+                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier3st, referenceTimeSeries: viewStore.bezier2st.trace)
+
+
+#endif
                 
                 BezierTimerSeriesTraceView(store: store.scope(state: \.bezier1st, action: { .jointBezier1stReducer($0)}))
                 BezierTimerSeriesTraceView(store: store.scope(state: \.bezier2st, action: { .jointBezier2stReducer($0)}))

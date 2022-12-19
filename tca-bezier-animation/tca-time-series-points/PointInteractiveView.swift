@@ -107,8 +107,8 @@ struct PointTextView: View {
             }
             
             //Publishing changes from within view updates is not allowed, this will cause undefined behavior.
-            .sheet(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
-            //.popover(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
+            
+            .popover(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
                 PointEditingStatePopoverView(environmentVariables: viewStore.environmentVariables, editingState: $value)
                     .modifier(FitPopoverViewModifier(width: 300, height: 400))
                     .onAppear{
