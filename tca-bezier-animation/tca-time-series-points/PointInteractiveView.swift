@@ -75,17 +75,11 @@ struct PointInteractiveView: View {
                 
                   
                 let combinedGesture = tapGesture.simultaneously(with: dragGesture)
-                //let combinedGesture = tapGesture.sequenced(before: dragGesture)
-                //let combinedGesture = tapGesture.exclusively(before: dragGesture)
-                //let combinedGesture = pressGesture.sequenced(before: dragGesture)
                 
                 Circle()
                     .fill(viewStore.state.color)
                     .frame(width: viewStore.state.size,height: viewStore.state.size )
                     .position(viewStore.state.point)
-//                    .gesture(DragGesture().onChanged({gesture in
-//                        viewStore.send(.point(gesture.location))
-//                    }))
                     .gesture(
                         combinedGesture
                       )
@@ -111,9 +105,12 @@ struct PointTextView: View {
                 }
                 
             }
+            
             //Publishing changes from within view updates is not allowed, this will cause undefined behavior.
-            .popover(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
+            .sheet(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
+            //.popover(unwrapping: viewStore.binding(get: \.popoverEditingState, send: PointReducer.Action.popoverEditing) ) { $value in
                 PointEditingStatePopoverView(environmentVariables: viewStore.environmentVariables, editingState: $value)
+                    .modifier(FitPopoverViewModifier(width: 300, height: 400))
                     .onAppear{
                         viewStore.send(.requestEnvironmentVariables)
                     }

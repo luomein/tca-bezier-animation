@@ -11,6 +11,7 @@ import ComposableArchitecture
 
 struct ContainerView: View{
     let store: StoreOf<ContainerReducer>
+    
     var body: some View {
         ContainerLayoutView(store: store, plottingViewBuilder: PlottingView.init, settingViewBuilder: SettingView.init)
             

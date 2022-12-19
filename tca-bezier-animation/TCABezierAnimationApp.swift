@@ -10,13 +10,14 @@ import ComposableArchitecture
 
 @main
 struct TCABezierAnimationApp: App {
-
+    
     var body: some Scene {
         WindowGroup {
 
             ZStack{
                 ContainerView(store: Store(initialState: .init( ) , reducer: ContainerReducer()))
             }
+            
         }
     }
 }

@@ -18,6 +18,7 @@
 		886764302943214200FC0167 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8867642F2943214200FC0167 /* tests.swift */; };
 		8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */; };
 		8882B1A1295019DF00136AD7 /* MultiLayerBezierCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */; };
+		8882B1A329504E7900136AD7 /* FitPopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */; };
 		889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */; };
 		889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */; };
 		88C04741294DCB8C0075DE44 /* VariableSpeedTimerReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C04740294DCB8C0075DE44 /* VariableSpeedTimerReducer.swift */; };
@@ -55,6 +56,7 @@
 		8867642F2943214200FC0167 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimerSeriesTraceView.swift; sourceTree = "<group>"; };
 		8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveView.swift; sourceTree = "<group>"; };
+		8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitPopoverViewModifier.swift; sourceTree = "<group>"; };
 		889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesSampleView.swift; sourceTree = "<group>"; };
 		889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveReducer.swift; sourceTree = "<group>"; };
 		88C04740294DCB8C0075DE44 /* VariableSpeedTimerReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableSpeedTimerReducer.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				880099BB293AC725007B85D0 /* tca-container */,
 				88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */,
 				885C4012294E98F000DE7143 /* EnvironmentVariables.swift */,
+				8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */,
 				88009987293A2D9F007B85D0 /* Assets.xcassets */,
 				88009989293A2D9F007B85D0 /* Preview Content */,
 			);
@@ -306,6 +309,7 @@
 				88C04751294DD58D0075DE44 /* ContainerReducer.swift in Sources */,
 				889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */,
 				88C04755294DEE1E0075DE44 /* SettingView.swift in Sources */,
+				8882B1A329504E7900136AD7 /* FitPopoverViewModifier.swift in Sources */,
 				88009984293A2D9E007B85D0 /* TCABezierAnimationApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
