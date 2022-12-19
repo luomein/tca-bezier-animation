@@ -12,45 +12,57 @@ import SwiftUINavigation
 struct BezierTimeSeriesPopoverView: View {
     @Binding var editingState : BezierTimeSeriesPointsReducer.State.PopoverEditingState
     let title: String
+    @Environment(\.horizontalSizeClass) var hClass
+    @Environment(\.verticalSizeClass) var vClass
     var body: some View {
-        Form{
-            Section {
-                Toggle(title, isOn: $editingState.plot)
-            }
-            Section("Point") {
-                
-                    Toggle("Show", isOn: $editingState.showLastPoint)
-                    ColorPicker("Color", selection: $editingState.lastPointColor)
-                HStack{
-                    Text("Size")
-                    Spacer()
-                    Slider(value: $editingState.lastPointSize,in: 2...30).frame(width: 100)//.padding(10)
+        //GeometryReader { proxy in
+            
+            
+            //ScrollView{
+                Form{
+                    Section {
+                        Toggle(title, isOn: $editingState.plot)
+                    }
+                    Section("Point") {
+                        
+                        Toggle("Show", isOn: $editingState.showLastPoint)
+                        ColorPicker("Color", selection: $editingState.lastPointColor)
+                        HStack{
+                            Text("Size")
+                            Spacer()
+                            Slider(value: $editingState.lastPointSize,in: 2...30).frame(width: 100)//.padding(10)
+                        }
+                    }
+                    Section("Reference Line") {
+                        
+                        Toggle("Show", isOn: $editingState.showReferenceLine)
+                        ColorPicker("Color", selection: $editingState.referenceColor)
+                        HStack{
+                            Text("Size")
+                            Spacer()
+                            Slider(value: $editingState.referenceLineWidth,in: 1...10).frame(width: 100)//.padding(10)
+                        }
+                    }
+                    Section("Trace") {
+                        
+                        Toggle("Show", isOn: $editingState.showTrace)
+                        ColorPicker("Color", selection: $editingState.traceColor)
+                        HStack{
+                            Text("Size")
+                            Spacer()
+                            Slider(value: $editingState.traceWidth,in: 1...10).frame(width: 100)//.padding(10)
+                        }
+                    }
                 }
-            }
-            Section("Reference Line") {
-                            
-                                Toggle("Show", isOn: $editingState.showReferenceLine)
-                                ColorPicker("Color", selection: $editingState.referenceColor)
-                            HStack{
-                                Text("Size")
-                                Spacer()
-                                Slider(value: $editingState.referenceLineWidth,in: 1...10).frame(width: 100)//.padding(10)
-                            }
-                        }
-            Section("Trace") {
-                            
-                                Toggle("Show", isOn: $editingState.showTrace)
-                                ColorPicker("Color", selection: $editingState.traceColor)
-                            HStack{
-                                Text("Size")
-                                Spacer()
-                                Slider(value: $editingState.traceWidth,in: 1...10).frame(width: 100)//.padding(10)
-                            }
-                        }
-        }
-        .padding(10)
-                    .frame(width:300,height: 800)
-                    
+                //.listStyle(.insetGrouped)
+                .padding(1)
+                .frame(width:300,height: 800)
+//                .frame(width: (hClass == .compact || vClass == .compact) ? proxy.size.width : 300,
+//                       height: (hClass == .compact || vClass == .compact) ? proxy.size.height : 800)
+                .background(Color.secondary)
+            //}
+            
+        //}
     }
 }
 struct BezierTimeSeriesConfigListItemView: View {

@@ -11,28 +11,28 @@ import XCTest
 import ComposableArchitecture
 import SwiftUI
 
-@MainActor
-class CounterTests: XCTestCase {
-    func testBasics() async {
-        let uuid = UUID()
-        let child = ChildReducer.State(id: uuid, pt: CGPoint(x: 0, y: 0))
-        let store = TestStore(initialState: ParentReducer.State(children: [child]), reducer: ParentReducer())
-        await store.send(.joinReducerAction(child.id, .movePoint(CGPoint(x: 100, y: 100)))){
-            $0.children[id: uuid]!.pt = CGPoint(x: 100, y: 100)
-        }
-    }
-}
-@MainActor
-class BezierTimeSeriesPointsReducerTests: XCTestCase{
-    func testBasics() async {
-        let store = TestStore(initialState: BezierTimeSeriesPointsReducer.State(multipleSeries: .initFromOrigin(points: [])), reducer: BezierTimeSeriesPointsReducer())
-        store.dependencies.uuid = .incrementing
-        let reference = MultipleTimeSeriesPointsReducer.State.initFromOrigin(points: [CGPoint(x: 100, y: 100),
-                                                                                     CGPoint(x: 200, y: 200)
-                                                                                     ])
-        //await store.send(.calculateNewPoint(referencePoints: reference, t: 0.5))
-    }
-}
+//@MainActor
+//class CounterTests: XCTestCase {
+//    func testBasics() async {
+//        let uuid = UUID()
+//        let child = ChildReducer.State(id: uuid, pt: CGPoint(x: 0, y: 0))
+//        let store = TestStore(initialState: ParentReducer.State(children: [child]), reducer: ParentReducer())
+//        await store.send(.joinReducerAction(child.id, .movePoint(CGPoint(x: 100, y: 100)))){
+//            $0.children[id: uuid]!.pt = CGPoint(x: 100, y: 100)
+//        }
+//    }
+//}
+//@MainActor
+//class BezierTimeSeriesPointsReducerTests: XCTestCase{
+//    func testBasics() async {
+//        let store = TestStore(initialState: BezierTimeSeriesPointsReducer.State(multipleSeries: .initFromOrigin(points: [])), reducer: BezierTimeSeriesPointsReducer())
+//        store.dependencies.uuid = .incrementing
+//        let reference = MultipleTimeSeriesPointsReducer.State.initFromOrigin(points: [CGPoint(x: 100, y: 100),
+//                                                                                     CGPoint(x: 200, y: 200)
+//                                                                                     ])
+//        //await store.send(.calculateNewPoint(referencePoints: reference, t: 0.5))
+//    }
+//}
 
 final class tests: XCTestCase {
 

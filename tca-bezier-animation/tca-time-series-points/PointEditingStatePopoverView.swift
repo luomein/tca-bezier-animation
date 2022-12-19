@@ -13,28 +13,38 @@ struct PointEditingStatePopoverView: View {
     //@EnvironmentObject var environmentVariables : EnvironmentVariables
     var environmentVariables : EnvironmentVariables
     @Binding var editingState : PointReducer.State.PopoverEditingState
+    @Environment(\.horizontalSizeClass) var hClass
+    @Environment(\.verticalSizeClass) var vClass
     var body: some View {
-        Form{
-            HStack{
-                Text("x: \(Int(editingState.point.x))")
-                Slider(value: $editingState.point.x,
-                       in: 0...environmentVariables.canvasSize.width).padding(10)
-            }
-            HStack{
-                Text("y: \(Int(editingState.point.y))")
-                Slider(value: $editingState.point.y,
-                       in: 0...environmentVariables.canvasSize.height).padding(10)
-            }
-            HStack{
-                ColorPicker("color", selection: $editingState.color)
-            }
-            HStack{
-                Text("size: \(Int(editingState.size))")
-                Slider(value: $editingState.size, in: 2...30).padding(10)
-            }
-        }.padding(10)
-            .frame(width:300,height: 400)
+        //GeometryReader { proxy in
+            //ScrollView{
+                Form{
+                    HStack{
+                        Text("x: \(Int(editingState.point.x))")
+                        Slider(value: $editingState.point.x,
+                               in: 0...environmentVariables.canvasSize.width).padding(10)
+                    }
+                    HStack{
+                        Text("y: \(Int(editingState.point.y))")
+                        Slider(value: $editingState.point.y,
+                               in: 0...environmentVariables.canvasSize.height).padding(10)
+                    }
+                    HStack{
+                        ColorPicker("color", selection: $editingState.color)
+                    }
+                    HStack{
+                        Text("size: \(Int(editingState.size))")
+                        Slider(value: $editingState.size, in: 2...30).padding(10)
+                    }
+                }
+                .padding(1)
+                .frame(width:300,height: 400)
+//                    .frame(width: (hClass == .compact || vClass == .compact) ? proxy.size.width : 300,
+//                           height: (hClass == .compact || vClass == .compact) ? proxy.size.height : 400)
+                    .background(Color.secondary)
+            //}
             
+        //}
     }
 }
 

@@ -49,7 +49,8 @@ struct PointReducer: ReducerProtocol {
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action{
         case .point(let value):
-            state.point = value
+            state.point = CGPoint(x: max(0,min(value.x, environmentVariables.canvasSize.width) ),
+                                  y: max(0,min(value.y, environmentVariables.canvasSize.height)) ) //value
             return EffectTask(value: .notificationPosizitionChanged)
         case .size(let value):
             state.size = value

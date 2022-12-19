@@ -15,7 +15,7 @@ struct SingleTimeSeriesPointsView: View{
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack{
                 ForEachStore(store.scope(state: \.timeSeries, action: {SingleTimeSeriesPointsReducer.Action.jointReducerAction($0.0,$0.1) })) { singleStore in
-                    PointSampleView(store: singleStore)
+                    PointInteractiveView(store: singleStore)
                                     }
                                 }
         }
@@ -60,7 +60,7 @@ struct MultipleTimeSeriesPointsView: View{
         }
     }
 }
-struct PointSampleView: View {
+struct PointInteractiveView: View {
     @Environment(\.horizontalSizeClass) var hClass
     let store: StoreOf<PointReducer>
         var body: some View {
@@ -89,6 +89,7 @@ struct PointSampleView: View {
                     .gesture(
                         combinedGesture
                       )
+                    
             }
         }
 }
@@ -123,7 +124,7 @@ struct PointTextView: View {
 struct PointSampleView_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader{proxy in
-                    PointSampleView(store: Store(initialState: .init(point: CGPoint(x: 100, y: 100), size: 20, color: .yellow, id: UUID()), reducer: PointReducer()))
+                    PointInteractiveView(store: Store(initialState: .init(point: CGPoint(x: 100, y: 100), size: 20, color: .yellow, id: UUID()), reducer: PointReducer()))
                     PointTextView(store: Store(initialState: .init(point: CGPoint(x: 100, y: 100), size: 30, color: .yellow, id: UUID()), reducer: PointReducer()))
                         
         }
