@@ -19,7 +19,7 @@
 		880099C1293AC7BE007B85D0 /* PointSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880099C0293AC7BE007B85D0 /* PointSectionView.swift */; };
 		880099C7293CADCF007B85D0 /* DrawingOptionsSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880099C6293CADCF007B85D0 /* DrawingOptionsSectionView.swift */; };
 		880099C9293CD463007B85D0 /* BezierOrderLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880099C8293CD463007B85D0 /* BezierOrderLayerView.swift */; };
-		885C4013294E98F000DE7143 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4012294E98F000DE7143 /* Environment.swift */; };
+		885C4013294E98F000DE7143 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4012294E98F000DE7143 /* EnvironmentVariables.swift */; };
 		885C4015294E998E00DE7143 /* PointEditingStatePopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4014294E998E00DE7143 /* PointEditingStatePopoverView.swift */; };
 		885C4018294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4017294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift */; };
 		885C401A294ED72000DE7143 /* LabReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4019294ED72000DE7143 /* LabReducer.swift */; };
@@ -83,7 +83,7 @@
 		880099C0293AC7BE007B85D0 /* PointSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointSectionView.swift; sourceTree = "<group>"; };
 		880099C6293CADCF007B85D0 /* DrawingOptionsSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingOptionsSectionView.swift; sourceTree = "<group>"; };
 		880099C8293CD463007B85D0 /* BezierOrderLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierOrderLayerView.swift; sourceTree = "<group>"; };
-		885C4012294E98F000DE7143 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		885C4012294E98F000DE7143 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		885C4014294E998E00DE7143 /* PointEditingStatePopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEditingStatePopoverView.swift; sourceTree = "<group>"; };
 		885C4017294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesPointsReducer.swift; sourceTree = "<group>"; };
 		885C4019294ED72000DE7143 /* LabReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabReducer.swift; sourceTree = "<group>"; };
@@ -173,7 +173,7 @@
 				8897BD53293D784A007E8FB2 /* TCA */,
 				880099BB293AC725007B85D0 /* Views */,
 				88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */,
-				885C4012294E98F000DE7143 /* Environment.swift */,
+				885C4012294E98F000DE7143 /* EnvironmentVariables.swift */,
 				88009987293A2D9F007B85D0 /* Assets.xcassets */,
 				88009989293A2D9F007B85D0 /* Preview Content */,
 			);
@@ -438,7 +438,7 @@
 			files = (
 				885C4018294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift in Sources */,
 				880099BD293AC73C007B85D0 /* ControlView.swift in Sources */,
-				885C4013294E98F000DE7143 /* Environment.swift in Sources */,
+				885C4013294E98F000DE7143 /* EnvironmentVariables.swift in Sources */,
 				880099C1293AC7BE007B85D0 /* PointSectionView.swift in Sources */,
 				8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */,
 				889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */,
