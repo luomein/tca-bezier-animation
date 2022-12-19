@@ -26,6 +26,7 @@ struct ContainerReducer: ReducerProtocol {
     enum Action : Equatable{
         case appearOnCanvas(CGSize)
         case redraw(MultipleTimeSeriesPointsReducer.State)
+        case checkCanvasBoundary(CGSize)
         case setEnvironmentVariables(EnvironmentVariables)
         
         case jointTimerReducer(VariableSpeedTimerReducer.Action)
@@ -52,7 +53,20 @@ struct ContainerReducer: ReducerProtocol {
             case .setEnvironmentVariables(let value):
                 environmentVariablesWrapper.cachedEnvironmentVariables = value
                 return .none
-
+            case .checkCanvasBoundary(let size):
+                let check = state.bezierCurve.controlPoints.multipleSeries.map({
+                    ($0.timeSeries.last!.point.x < size.width) &&
+                    ($0.timeSeries.last!.point.y < size.height)
+                })
+                if check.contains(false){
+                    let cgPoints = state.bezierCurve.controlPoints.multipleSeries.map({
+                        CGPoint(x: min(size.width, $0.timeSeries.last!.point.x),
+                                y: min(size.height, $0.timeSeries.last!.point.y))
+                    })
+                    let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(points: cgPoints)
+                    return EffectTask(value: .redraw(controlPoints))
+                }
+                return .none
             case .appearOnCanvas(let value):
                 if state.bezierCurve.controlPoints.multipleSeries.isEmpty{
                     let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromGeometry(size: value)

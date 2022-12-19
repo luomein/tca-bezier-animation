@@ -36,10 +36,11 @@ struct PlottingView: View {
                     .task(id: proxy.size) {
                         
                         viewStore.send(.setEnvironmentVariables(EnvironmentVariables(canvasSize: proxy.size)))
+                        viewStore.send(.checkCanvasBoundary(proxy.size))
                     }
 
                 }
-            }
+            }.padding(5)
             
         }
     }

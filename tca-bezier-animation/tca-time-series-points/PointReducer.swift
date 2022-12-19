@@ -9,6 +9,12 @@ import Foundation
 import ComposableArchitecture
 import SwiftUI
 
+extension CGPoint : Hashable{
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(x)
+        hasher.combine(y)
+      }
+}
 struct PointReducer: ReducerProtocol {
     @Dependency(\.environmentVariables) var environmentVariables
     struct State: Equatable, Identifiable{
