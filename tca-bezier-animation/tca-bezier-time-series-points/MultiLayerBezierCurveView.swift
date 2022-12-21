@@ -59,24 +59,24 @@ struct MultiLayerBezierCurveView: View {
                 
 #if LAB
                 //special effect
-                MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier3st, referenceTimeSeries: viewStore.bezier2st.trace)
+                MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier3rd, referenceTimeSeries: viewStore.bezier2nd.trace)
                 
 #else
                 //reference line
                 MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier1st, referenceTimeSeries: viewStore.controlPoints)
-                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier2st, referenceTimeSeries: viewStore.bezier1st.trace)
-                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier3st, referenceTimeSeries: viewStore.bezier2st.trace)
+                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier2nd, referenceTimeSeries: viewStore.bezier1st.trace)
+                MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier3rd, referenceTimeSeries: viewStore.bezier2nd.trace)
 
 
 #endif
                 
                 BezierTimerSeriesTraceView(store: store.scope(state: \.bezier1st, action: { .jointBezier1stReducer($0)}))
-                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier2st, action: { .jointBezier2stReducer($0)}))
-                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier3st, action: { .jointBezier3stReducer($0)}))
+                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2stReducer($0)}))
+                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3stReducer($0)}))
                 
                 BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier1st, action: { .jointBezier1stReducer($0)}))
-                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier2st, action: { .jointBezier2stReducer($0)}))
-                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier3st, action: { .jointBezier3stReducer($0)}))
+                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2stReducer($0)}))
+                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3stReducer($0)}))
                 
                 
             }

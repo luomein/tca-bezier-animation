@@ -21,6 +21,12 @@ struct SingleTimeSeriesPointsReducer: ReducerProtocol {
                 PointReducer.State(point: point, size: 10, color: .black, id: pointID)
             ]))
         }
+        static func initFromOrigin(richPoint: RichPoint, stateId: UUID = UUID(),
+                                           pointID: UUID = UUID() )->State{
+                    return State(id: stateId, timeSeries: IdentifiedArray(uniqueElements: [
+                        PointReducer.State(point: richPoint.point, size: richPoint.size, color: richPoint.color, id: pointID)
+                    ]))
+                }
     }
     enum Action : Equatable{
         case notificationPosizitionChanged
@@ -47,16 +53,23 @@ struct SingleTimeSeriesPointsReducer: ReducerProtocol {
 }
 struct MultipleTimeSeriesPointsReducer: ReducerProtocol {
     struct State: Equatable{
+        
+        
         //var id: UUID
         var multipleSeries : IdentifiedArray<SingleTimeSeriesPointsReducer.State.ID, SingleTimeSeriesPointsReducer.State>
          = IdentifiedArray(uniqueElements: [] )
 
         static func initFromOrigin(points: [CGPoint])->State{
-//            print("initFromOrigin", points.count)
             return State(multipleSeries: IdentifiedArray(uniqueElements: points.map({
                 SingleTimeSeriesPointsReducer.State.initFromOrigin(point: $0)
             })))
 
+        }
+        static func initFromOrigin(richPoints: [RichPoint])->State{
+            return State(multipleSeries: IdentifiedArray(uniqueElements: richPoints.map({
+                SingleTimeSeriesPointsReducer.State.initFromOrigin(richPoint: $0)
+            })))
+            
         }
         static func initFromGeometry(size: CGSize)->State{
             let center = CGPoint(x: size.width/2, y: size.height/2)

@@ -18,7 +18,9 @@ struct FitPopoverViewModifier : ViewModifier{
             content
                 .presentationDetents([.medium, .large])
                 .onTapGesture {
-                    dismiss()
+                    if  UIDevice.current.orientation.isLandscape{
+                        dismiss()
+                    }
                 }
         }
         else{

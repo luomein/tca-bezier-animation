@@ -34,6 +34,30 @@ import SwiftUI
 //    }
 //}
 
+@MainActor
+class RichPointTests: XCTestCase{
+    func test(){
+        let richPoints = [ RichPoint(point: CGPoint(x: 100, y: 100), size: 10, color: .red),
+                           RichPoint(point: CGPoint(x: 100, y: 200), size: 10, color: .green),
+                           RichPoint(point: CGPoint(x: 200, y: 150), size: 10, color: .blue),
+                           RichPoint(point: CGPoint(x: 300, y: 50), size: 10, color: .orange)
+                           ]
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(richPoints) {
+            print(String(data: encoded, encoding: .utf8)!)
+        }
+    }
+    func testInitPoints(){
+        let jsonString = """
+[{"point":[100,100],"size":10,"color":{"red":0.99999994039535522,"green":0.23137253522872925,"blue":0.18823528289794922}},{"point":[100,200],"size":10,"color":{"red":0.20392152667045593,"green":0.78039216995239258,"blue":0.34901958703994751}},{"point":[200,150],"size":10,"color":{"red":0,"green":0.47843140363693237,"blue":0.99999994039535522}},{"point":[300,50],"size":10,"color":{"red":0.99999994039535522,"green":0.58431375026702881,"blue":0}}]
+"""
+        let jsonData = jsonString.data(using: .utf8)!
+        let richPoints: [RichPoint] = try! JSONDecoder().decode([RichPoint].self, from: jsonData)
+        let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
+        print(controlPoints)
+    }
+}
+
 final class tests: XCTestCase {
 
     override func setUpWithError() throws {

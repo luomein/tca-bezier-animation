@@ -25,6 +25,21 @@ struct BezierTimeSeriesPointsReducer: ReducerProtocol{
         var plot = true
         var popoverEditingState: PopoverEditingState?
         
+        init(drawingOption: BezierTimeSeriesDrawingOption){
+            self.plot = drawingOption.plot
+            self.showLastPoint = drawingOption.showLastPoint
+            self.showTrace = drawingOption.showTrace
+            self.showReferenceLine = drawingOption.showReferenceLine
+            self.lastPointColor = drawingOption.lastPointColor
+            self.traceColor = drawingOption.traceColor
+            self.referenceColor = drawingOption.referenceColor
+            self.lastPointSize = drawingOption.lastPointSize
+            self.referenceLineWidth = drawingOption.referenceLineWidth
+            self.traceWidth = drawingOption.traceWidth
+            
+            trace = .initFromOrigin(richPoints: [])
+        }
+        
         struct PopoverEditingState: Equatable{
             var plot = true
             var showLastPoint = false

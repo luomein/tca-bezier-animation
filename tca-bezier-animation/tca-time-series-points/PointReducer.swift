@@ -15,6 +15,7 @@ extension CGPoint : Hashable{
         hasher.combine(y)
       }
 }
+
 struct PointReducer: ReducerProtocol {
     @Dependency(\.environmentVariables) var environmentVariables
     struct State: Equatable, Identifiable{
@@ -24,6 +25,8 @@ struct PointReducer: ReducerProtocol {
         var id: UUID
         var popoverEditingState: PopoverEditingState?
         var environmentVariables: EnvironmentVariables = .init()
+        
+        
         
         struct PopoverEditingState: Equatable{
             var point : CGPoint

@@ -37,6 +37,8 @@ struct TimerTickerView: View {
                     viewStore.send(.toggleTimer(true))
                 })
                 .onDisappear(perform: {
+                    //on iPhone, when rotating device, it will cause the view to disappear
+                    //the event is, onAppear -> onDisappear
                     viewStore.send(.toggleTimer(false))
                 })
             }

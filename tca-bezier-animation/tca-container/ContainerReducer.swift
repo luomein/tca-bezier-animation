@@ -31,9 +31,21 @@ struct ContainerReducer: ReducerProtocol {
         
         case jointTimerReducer(VariableSpeedTimerReducer.Action)
         case jointBezierCurveReducer(MultiLayerBezierCurveReducer.Action)
-    
+        
     }
+    func initDefaultControlPoints()->MultipleTimeSeriesPointsReducer.State{
+        var richPoints: [RichPoint]!
+        if let data = UserDefaults.standard.object(forKey: SnapShotJsonFileName.controlPoints.rawValue) as? Data {
+            richPoints = loadJsonFromData(data: data)
 
+        }
+        else{
+            richPoints = loadJsonFromBundle(filename: "DefaultControlPoints")
+            print("file not exists")
+        }
+        let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
+        return controlPoints
+    }
     struct DebounceID : Hashable{}
     var body: some ReducerProtocol<State, Action> {
         Scope(state: \.timer, action: /Action.jointTimerReducer) {
@@ -51,6 +63,8 @@ struct ContainerReducer: ReducerProtocol {
                 state.bezierCurve.controlPoints = controlPoints
                 return EffectTask(value: .jointTimerReducer(.startFromTick(0)))
             case .setEnvironmentVariables(let value):
+                //print("cachedEnvironmentVariables", value)
+                //on iPhone 8 Plus, this value is incorrect after rotate device
                 environmentVariablesWrapper.cachedEnvironmentVariables = value
                 return .none
             case .checkCanvasBoundary(let size):
@@ -59,25 +73,27 @@ struct ContainerReducer: ReducerProtocol {
                     ($0.timeSeries.last!.point.y < size.height)
                 })
                 if check.contains(false){
-                    let cgPoints = state.bezierCurve.controlPoints.multipleSeries.map({
+                    let richPoints = state.bezierCurve.controlPoints.multipleSeries.map({
+                        RichPoint(point:
                         CGPoint(x: min(size.width, $0.timeSeries.last!.point.x),
                                 y: min(size.height, $0.timeSeries.last!.point.y))
+                                  , size: $0.timeSeries.last!.size,
+                                  color: $0.timeSeries.last!.color)
                     })
-                    let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(points: cgPoints)
+                    let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints:  richPoints )
                     return EffectTask(value: .redraw(controlPoints))
                 }
                 return .none
             case .appearOnCanvas(let value):
                 if state.bezierCurve.controlPoints.multipleSeries.isEmpty{
-                    let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromGeometry(size: value)
+                    let controlPoints = initDefaultControlPoints()
                     return EffectTask(value: .redraw(controlPoints))
                 }
                 return .none
             case .jointTimerReducer(let timerAction):
                 switch timerAction{
                 case .startFromTick(let tick):
-                    return
-                    EffectTask(value: .jointBezierCurveReducer(.recalculateTrace(tick: tick, totalTicks: state.timer.totalTicks)))
+                    return EffectTask(value: .jointBezierCurveReducer(.recalculateTrace(tick: tick, totalTicks: state.timer.totalTicks)))
 
                 case .stepForward:
                     return
@@ -87,14 +103,17 @@ struct ContainerReducer: ReducerProtocol {
                 }
             case .jointBezierCurveReducer(let subAction):
                 switch subAction{
+                
                 case .notificationPosizitionChanged:
                     return EffectTask(value: .jointTimerReducer(.startFromTick(0)))
+//
+                    
                 default:
                     return .none
+//
                 }
-
-            default:
-                return .none
+            
+            
             }
         }
 

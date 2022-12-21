@@ -15,14 +15,28 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
     struct State: Equatable {
         var controlPoints: MultipleTimeSeriesPointsReducer.State = .initFromOrigin(points: [])
         
-        var bezier1st: BezierTimeSeriesPointsReducer.State = .init(trace: .initFromOrigin(points: []))
-        var bezier2st: BezierTimeSeriesPointsReducer.State = .init(trace: .initFromOrigin(points: []))
-        var bezier3st: BezierTimeSeriesPointsReducer.State = .init(trace: .initFromOrigin(points: []))
+        var bezier1st: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier1stDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier1st.rawValue) )
+                                                                    //loadJsonFromBundle(filename: "DefaultBezier1stDrawingOption"))
+            //.init(trace: .initFromOrigin(points: []))
+        var bezier2nd: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier2ndDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier2nd.rawValue) )
+            //.init(drawingOption: loadJsonFromBundle(filename: "DefaultBezier2ndDrawingOption"))
+        var bezier3rd: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier3rdDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier3rd.rawValue) )
+            //.init(drawingOption: loadJsonFromBundle(filename: "DefaultBezier3rdDrawingOption"))
         
+        static func loadData(bundleFileName: String, userDefaultsKeyName: String)->BezierTimeSeriesDrawingOption{
+            var drawingOption : BezierTimeSeriesDrawingOption!
+            if let data = UserDefaults.standard.object(forKey: userDefaultsKeyName) as? Data{
+                drawingOption = loadJsonFromData(data: data)
+            }
+            else{
+                drawingOption = loadJsonFromBundle(filename: bundleFileName)
+            }
+            return drawingOption
+        }
         static func clearTrace(state: inout State){
             state.bezier1st.trace =  .initFromOrigin(points: [])
-            state.bezier2st.trace =  .initFromOrigin(points: [])
-            state.bezier3st.trace =  .initFromOrigin(points: []) 
+            state.bezier2nd.trace =  .initFromOrigin(points: [])
+            state.bezier3rd.trace =  .initFromOrigin(points: []) 
         }
     }
 //    func initBezier1stDefaultParameter()->BezierTimeSeriesPointsReducer.State{
@@ -37,7 +51,9 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         case jointBezier1stReducer(BezierTimeSeriesPointsReducer.Action)
         case jointBezier2stReducer(BezierTimeSeriesPointsReducer.Action)
         case jointBezier3stReducer(BezierTimeSeriesPointsReducer.Action)
+        case saveState(Data, String)
     }
+    struct DebounceID : Hashable{}
     var body: some ReducerProtocol<State, Action> {
         Scope(state: \.controlPoints, action: /Action.jointControlPointsReducer) {
             MultipleTimeSeriesPointsReducer()
@@ -46,10 +62,10 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         Scope(state: \.bezier1st, action: /Action.jointBezier1stReducer) {
             BezierTimeSeriesPointsReducer()
         }
-        Scope(state: \.bezier2st, action: /Action.jointBezier2stReducer) {
+        Scope(state: \.bezier2nd, action: /Action.jointBezier2stReducer) {
             BezierTimeSeriesPointsReducer()
         }
-        Scope(state: \.bezier3st, action: /Action.jointBezier3stReducer) {
+        Scope(state: \.bezier3rd, action: /Action.jointBezier3stReducer) {
             BezierTimeSeriesPointsReducer()
         }
         Reduce{state, action  in
@@ -59,7 +75,10 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
                 case .notificationPosizitionChanged:
                     return EffectTask(value: .notificationPosizitionChanged)
                 default:
-                    return .none
+                    let data = RichPoint.encodedFromState(state: state.controlPoints.multipleSeries.map({$0.timeSeries.last!}))
+                    let keyName = SnapShotJsonFileName.controlPoints.rawValue
+                    return EffectTask(value: .saveState(data, keyName))
+                        .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
                 }
             case .calculateNewPoint(let t):
                 calculateNewPoint(t: t, state: &state)
@@ -71,6 +90,24 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
                     calculateNewPoint(t: t, state: &state)
                 }
                 return .none
+            case .saveState(let data, let keyName):
+                saveDataToUserDefaults(data, keyName: keyName)
+                return .none
+            case .jointBezier1stReducer:
+                let data = BezierTimeSeriesDrawingOption.encodedFromState(state:state.bezier1st)
+                let keyName = SnapShotJsonFileName.bezier1st.rawValue
+                return EffectTask(value: .saveState(data, keyName))
+                    .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
+            case .jointBezier2stReducer:
+                let data = BezierTimeSeriesDrawingOption.encodedFromState(state:state.bezier2nd)
+                let keyName = SnapShotJsonFileName.bezier2nd.rawValue
+                return EffectTask(value: .saveState(data, keyName))
+                    .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
+            case .jointBezier3stReducer:
+                let data = BezierTimeSeriesDrawingOption.encodedFromState(state:state.bezier3rd)
+                let keyName = SnapShotJsonFileName.bezier3rd.rawValue
+                return EffectTask(value: .saveState(data, keyName))
+                    .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
             default:
                 return .none
             }
@@ -106,8 +143,8 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         }
     func calculateNewPoint(t: Double, state: inout State){
         calculateNewPoint(referencePoints: state.controlPoints, t: t, state: &state.bezier1st.trace)
-        calculateNewPoint(referencePoints: state.bezier1st.trace, t: t, state: &state.bezier2st.trace)
-        calculateNewPoint(referencePoints: state.bezier2st.trace, t: t, state: &state.bezier3st.trace)
+        calculateNewPoint(referencePoints: state.bezier1st.trace, t: t, state: &state.bezier2nd.trace)
+        calculateNewPoint(referencePoints: state.bezier2nd.trace, t: t, state: &state.bezier3rd.trace)
     }
         func calculateNewPoint(referencePoints: MultipleTimeSeriesPointsReducer.State, t: Double, state: inout MultipleTimeSeriesPointsReducer.State){
             //assert(referencePoints.multipleSeries.count>=2)

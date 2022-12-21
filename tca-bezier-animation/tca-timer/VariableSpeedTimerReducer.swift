@@ -13,7 +13,11 @@ struct VariableSpeedTimerReducer: ReducerProtocol {
     
     class TimerSpeedParameter{
         static let timerSpeedMax : Double = 100.0
-        static let timerSpeedInitValue : Double = 50.0
+#if SNAPSHOT
+        static let timerSpeedInitValue : Double = 70.0
+#else
+        static let timerSpeedInitValue : Double = 15.0
+#endif
         static let timerTotalTicksMin = 1.0
         static let timerTotalTicksMax = 100.0
 
@@ -26,7 +30,7 @@ struct VariableSpeedTimerReducer: ReducerProtocol {
     
     struct State: Equatable{
         var currentTick : Double = 0.0
-        var totalTicks : Double = 10.0
+        var totalTicks : Double = 50.0
         var isTimerOn = false
         var timerSpeed: Double = TimerSpeedParameter.timerSpeedInitValue
         
@@ -67,12 +71,13 @@ struct VariableSpeedTimerReducer: ReducerProtocol {
             }
             
         case .startTask:
-            let clock = ContinuousClock()
+            let clock = SuspendingClock()
             return .run {[timerSpeed = state.timerSpeed] sender in
                 while !Task.isCancelled{
                     do{
                         try await clock.sleep(for: .milliseconds(TimerSpeedParameter.getTimerInterval(timerSpeed: timerSpeed)))
                         //print(timerSpeed)
+                        await Task.yield()
                         await sender.send(.stepForward)
                     }
                     catch{

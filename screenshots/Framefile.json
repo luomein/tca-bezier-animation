@@ -1,0 +1,19 @@
+{
+  "default": {
+    "keyword": {
+
+    },
+
+    "background": "./background.png",
+    "padding": 0,
+    "show_complete_frame": true
+  },
+
+
+  "data": [
+    {
+          "filter": "snapshot"
+
+        }
+  ]
+}

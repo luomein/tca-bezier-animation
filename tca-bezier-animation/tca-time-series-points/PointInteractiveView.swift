@@ -67,13 +67,15 @@ struct PointInteractiveView: View {
             WithViewStore(self.store, observe: { $0 }) { viewStore in
                 
                 let dragGesture = DragGesture().onChanged({gesture in
+                    viewStore.send(.requestEnvironmentVariables)
                     viewStore.send(.point(gesture.location))
+                    
                 })
                 let tapGesture = TapGesture().onEnded({ _ in
                     viewStore.send(.tap(hClass))
                 })
                 
-                  
+                
                 let combinedGesture = tapGesture.simultaneously(with: dragGesture)
                 
                 Circle()
@@ -82,8 +84,9 @@ struct PointInteractiveView: View {
                     .position(viewStore.state.point)
                     .gesture(
                         combinedGesture
-                      )
-                    
+                    )
+                
+                
             }
         }
 }

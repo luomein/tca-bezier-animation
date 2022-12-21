@@ -24,8 +24,8 @@ struct SettingView: View {
                 Section("Bezier Curve") {
                     List{
                         BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier1st, action: {.jointBezierCurveReducer(.jointBezier1stReducer($0))}), title: "1st Order")
-                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier2st, action: {.jointBezierCurveReducer(.jointBezier2stReducer($0))}), title: "2st Order")
-                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier3st, action: {.jointBezierCurveReducer(.jointBezier3stReducer($0))}), title: "3st Order")
+                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier2nd, action: {.jointBezierCurveReducer(.jointBezier2stReducer($0))}), title: "2st Order")
+                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier3rd, action: {.jointBezierCurveReducer(.jointBezier3stReducer($0))}), title: "3st Order")
                     }
                 }
             }
