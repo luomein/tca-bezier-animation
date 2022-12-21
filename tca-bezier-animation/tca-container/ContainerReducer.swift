@@ -41,7 +41,7 @@ struct ContainerReducer: ReducerProtocol {
         }
         else{
             richPoints = loadJsonFromBundle(filename: "DefaultControlPoints")
-            print("file not exists")
+            //print("file not exists")
         }
         let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
         return controlPoints
