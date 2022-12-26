@@ -49,8 +49,8 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         case notificationPosizitionChanged
         case jointControlPointsReducer(MultipleTimeSeriesPointsReducer.Action)
         case jointBezier1stReducer(BezierTimeSeriesPointsReducer.Action)
-        case jointBezier2stReducer(BezierTimeSeriesPointsReducer.Action)
-        case jointBezier3stReducer(BezierTimeSeriesPointsReducer.Action)
+        case jointBezier2ndReducer(BezierTimeSeriesPointsReducer.Action)
+        case jointBezier3rdReducer(BezierTimeSeriesPointsReducer.Action)
         case saveState(Data, String)
     }
     struct DebounceID : Hashable{}
@@ -62,10 +62,10 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         Scope(state: \.bezier1st, action: /Action.jointBezier1stReducer) {
             BezierTimeSeriesPointsReducer()
         }
-        Scope(state: \.bezier2nd, action: /Action.jointBezier2stReducer) {
+        Scope(state: \.bezier2nd, action: /Action.jointBezier2ndReducer) {
             BezierTimeSeriesPointsReducer()
         }
-        Scope(state: \.bezier3rd, action: /Action.jointBezier3stReducer) {
+        Scope(state: \.bezier3rd, action: /Action.jointBezier3rdReducer) {
             BezierTimeSeriesPointsReducer()
         }
         Reduce{state, action  in
@@ -98,12 +98,12 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
                 let keyName = SnapShotJsonFileName.bezier1st.rawValue
                 return EffectTask(value: .saveState(data, keyName))
                     .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
-            case .jointBezier2stReducer:
+            case .jointBezier2ndReducer:
                 let data = BezierTimeSeriesDrawingOption.encodedFromState(state:state.bezier2nd)
                 let keyName = SnapShotJsonFileName.bezier2nd.rawValue
                 return EffectTask(value: .saveState(data, keyName))
                     .debounce(id: DebounceID(), for: 1, scheduler: DispatchQueue.main)
-            case .jointBezier3stReducer:
+            case .jointBezier3rdReducer:
                 let data = BezierTimeSeriesDrawingOption.encodedFromState(state:state.bezier3rd)
                 let keyName = SnapShotJsonFileName.bezier3rd.rawValue
                 return EffectTask(value: .saveState(data, keyName))

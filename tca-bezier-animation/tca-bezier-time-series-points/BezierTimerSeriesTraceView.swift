@@ -13,7 +13,7 @@ struct BezierTimerSeriesTraceView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack{
-                if viewStore.plot && viewStore.showTrace{
+                if viewStore.plot && viewStore.showTrace && viewStore.traceOption == .all{
                     ForEach(viewStore.trace.multipleSeries) { singleSeries in
                         Path{path in
                             path.addLines(singleSeries.timeSeries.map({
@@ -31,11 +31,11 @@ struct BezierTimerSeriesLastPointsView: View {
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack{
-                if viewStore.plot && viewStore.showLastPoint{
+                if viewStore.plot && viewStore.showTrace && viewStore.traceOption == .lastOne{
                     ForEach(viewStore.trace.multipleSeries) { singleSeries in
                         Circle()
-                            .fill(viewStore.lastPointColor)
-                            .frame(width: viewStore.lastPointSize, height: viewStore.lastPointSize)
+                            .fill(viewStore.traceColor)
+                            .frame(width: viewStore.traceWidth, height: viewStore.traceWidth)
                             .position(singleSeries.timeSeries.last!.point)
                         
                     }

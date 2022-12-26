@@ -1,13 +1,14 @@
 {
-   "showLastPoint" : true,
+   
    "showTrace" : true,
    "showReferenceLine" : false,
-   "lastPointColor" : {"red":0.5,"green":0.5,"blue":0.5} ,
+   
    "traceColor"  : {"red":0.5,"green":0.5,"blue":0.5} ,
    "referenceColor" : {"red":0.5,"green":0.5,"blue":0.5} ,
-   "lastPointSize" : 3,
+   
    "referenceLineWidth" : 1,
    "traceWidth" : 1,
-   "plot" : true
-   
+   "plot" : true,
+   "traceOption"  : 1,
+   "referenceLineOption" : 0
 }

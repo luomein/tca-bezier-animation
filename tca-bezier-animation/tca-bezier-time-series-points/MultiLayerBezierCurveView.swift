@@ -14,7 +14,7 @@ struct MultiLayerBezierCurveAllReferenceLineView: View {
     var body: some View {
         
         ZStack{
-            if bezierTimeSeries.plot && bezierTimeSeries.showReferenceLine{
+            if bezierTimeSeries.plot && bezierTimeSeries.showReferenceLine && bezierTimeSeries.referenceLineOption == .all{
                 if !referenceTimeSeries.multipleSeries.isEmpty{
                     let zipped : [[CGPoint]] = MultiLayerBezierCurveReducer.zipT(
                         referenceTimeSeries.multipleSeries.map({
@@ -40,7 +40,7 @@ struct MultiLayerBezierCurveReferenceLineView: View {
     var body: some View {
         
         ZStack{
-            if bezierTimeSeries.plot && bezierTimeSeries.showReferenceLine{
+            if bezierTimeSeries.plot && bezierTimeSeries.showReferenceLine && bezierTimeSeries.referenceLineOption == .lastOne{
                 Path{path in
                     path.addLines(referenceTimeSeries.multipleSeries.map({
                         $0.timeSeries.last!.point
@@ -50,33 +50,47 @@ struct MultiLayerBezierCurveReferenceLineView: View {
         }
     }
 }
-struct MultiLayerBezierCurveView: View {
+struct MultiLayerBezierReferenceLineView: View {
     let store: StoreOf<MultiLayerBezierCurveReducer>
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
             ZStack{
-                
-                
-#if LAB
-                //special effect
+                MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier1st, referenceTimeSeries: viewStore.controlPoints)
+                MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier2nd, referenceTimeSeries: viewStore.bezier1st.trace)
                 MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: viewStore.bezier3rd, referenceTimeSeries: viewStore.bezier2nd.trace)
                 
-#else
-                //reference line
                 MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier1st, referenceTimeSeries: viewStore.controlPoints)
                 MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier2nd, referenceTimeSeries: viewStore.bezier1st.trace)
                 MultiLayerBezierCurveReferenceLineView(bezierTimeSeries: viewStore.bezier3rd, referenceTimeSeries: viewStore.bezier2nd.trace)
-
-
-#endif
+            }
+        }
+    }
+}
+struct MultiLayerBezierCurveView: View {
+    let store: StoreOf<MultiLayerBezierCurveReducer>
+    
+   
+    var body: some View {
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            ZStack{
                 
+                MultiLayerBezierReferenceLineView(store: store)
+
+                
+                
+
+                
+                
+
+
+                //trace
                 BezierTimerSeriesTraceView(store: store.scope(state: \.bezier1st, action: { .jointBezier1stReducer($0)}))
-                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2stReducer($0)}))
-                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3stReducer($0)}))
+                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2ndReducer($0)}))
+                BezierTimerSeriesTraceView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3rdReducer($0)}))
                 
                 BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier1st, action: { .jointBezier1stReducer($0)}))
-                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2stReducer($0)}))
-                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3stReducer($0)}))
+                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier2nd, action: { .jointBezier2ndReducer($0)}))
+                BezierTimerSeriesLastPointsView(store: store.scope(state: \.bezier3rd, action: { .jointBezier3rdReducer($0)}))
                 
                 
             }

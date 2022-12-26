@@ -9,29 +9,45 @@ import Foundation
 import SwiftUI
 
 struct BezierTimeSeriesDrawingOption : Codable{
-    var showLastPoint : Bool // = false
+    //var showLastPoint : Bool // = false
     var showTrace : Bool // = true
     var showReferenceLine : Bool // = true
-    var lastPointColor : Color // = Color.black
+    //var lastPointColor : Color // = Color.black
     var traceColor : Color // = Color.black
     var referenceColor : Color // = Color.black
-    var lastPointSize : Double //= 5
+    //var lastPointSize : Double //= 5
     var referenceLineWidth : Double //= 2
     var traceWidth : Double //= 2
     var plot : Bool //  = true
+    var traceOption : TraceOption? = .all
+    var referenceLineOption : ReferenceLineOption? = .lastOne
+    
+    enum TraceOption : Int, Codable{
+        
+        case lastOne = 0
+        case all = 1
+    }
+    enum ReferenceLineOption : Int, Codable{
+        
+        case lastOne = 0
+        case all = 1
+    }
     
     static func initFromState(state: BezierTimeSeriesPointsReducer.State)->BezierTimeSeriesDrawingOption{
         return BezierTimeSeriesDrawingOption(
-            showLastPoint: state.showLastPoint,
+            //showLastPoint: state.showLastPoint,
             showTrace: state.showTrace,
             showReferenceLine: state.showReferenceLine,
-            lastPointColor: state.lastPointColor,
+            //lastPointColor: state.lastPointColor,
             traceColor: state.traceColor,
             referenceColor: state.referenceColor,
-            lastPointSize: state.lastPointSize,
+            //lastPointSize: state.lastPointSize,
             referenceLineWidth: state.referenceLineWidth,
             traceWidth: state.traceWidth,
-            plot: state.plot)
+            plot: state.plot,
+            traceOption: state.traceOption,
+            referenceLineOption : state.referenceLineOption
+        )
     }
     
     static func encodedFromState(state: BezierTimeSeriesPointsReducer.State)->Data{

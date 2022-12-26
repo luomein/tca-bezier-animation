@@ -34,9 +34,10 @@ struct PlottingView: View {
                         viewStore.send(.appearOnCanvas(proxy.size))
                     }
                     .task(id: proxy.size) {
-                        
-                        viewStore.send(.setEnvironmentVariables(EnvironmentVariables(canvasSize: proxy.size)))
-                        viewStore.send(.checkCanvasBoundary(proxy.size))
+                        if proxy.size != .zero{
+                            viewStore.send(.setEnvironmentVariables(EnvironmentVariables(canvasSize: proxy.size)))
+                            viewStore.send(.checkCanvasBoundary(proxy.size))
+                        }
                     }
 
                 }

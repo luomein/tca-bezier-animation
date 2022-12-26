@@ -12,6 +12,7 @@
 		8800998B293A2D9F007B85D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */; };
 		880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 880099B3293A2E17007B85D0 /* ComposableArchitecture */; };
 		880099BA293AC6D3007B85D0 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880099B9293AC6D3007B85D0 /* ContainerView.swift */; };
+		88467F2429594373003C8875 /* BezierTimeSeriesPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */; };
 		885C4013294E98F000DE7143 /* EnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4012294E98F000DE7143 /* EnvironmentVariables.swift */; };
 		885C4015294E998E00DE7143 /* PointEditingStatePopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4014294E998E00DE7143 /* PointEditingStatePopoverView.swift */; };
 		885C4018294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885C4017294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift */; };
@@ -70,6 +71,7 @@
 		88009987293A2D9F007B85D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		880099B9293AC6D3007B85D0 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesPopoverView.swift; sourceTree = "<group>"; };
 		885C4012294E98F000DE7143 /* EnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentVariables.swift; sourceTree = "<group>"; };
 		885C4014294E998E00DE7143 /* PointEditingStatePopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointEditingStatePopoverView.swift; sourceTree = "<group>"; };
 		885C4017294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesPointsReducer.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */,
 				8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */,
 				8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */,
+				88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */,
 			);
 			path = "tca-bezier-time-series-points";
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				885C4018294EA57F00DE7143 /* BezierTimeSeriesPointsReducer.swift in Sources */,
+				88467F2429594373003C8875 /* BezierTimeSeriesPopoverView.swift in Sources */,
 				885C4013294E98F000DE7143 /* EnvironmentVariables.swift in Sources */,
 				8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */,
 				88D577E22952D79B0030FCB4 /* AppFileManager.swift in Sources */,
@@ -589,6 +593,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniBez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -619,6 +624,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniBez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -745,6 +751,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniBez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -904,6 +911,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniBez;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

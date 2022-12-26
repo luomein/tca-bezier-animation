@@ -13,29 +13,33 @@ struct BezierTimeSeriesPointsReducer: ReducerProtocol{
     @Dependency(\.uuid) var uuid
     struct State: Equatable {
         var trace : MultipleTimeSeriesPointsReducer.State
-        var showLastPoint = false
+        //var showLastPoint = false
         var showTrace = true
         var showReferenceLine = true
-        var lastPointColor = Color.black
+        //var lastPointColor = Color.black
         var traceColor = Color.black
         var referenceColor = Color.black
-        var lastPointSize : Double = 5
+        //var lastPointSize : Double = 5
         var referenceLineWidth : Double = 2
         var traceWidth : Double = 2
         var plot = true
         var popoverEditingState: PopoverEditingState?
+        var traceOption : BezierTimeSeriesDrawingOption.TraceOption = .all
+        var referenceLineOption : BezierTimeSeriesDrawingOption.ReferenceLineOption = .lastOne
         
         init(drawingOption: BezierTimeSeriesDrawingOption){
             self.plot = drawingOption.plot
-            self.showLastPoint = drawingOption.showLastPoint
+            //self.showLastPoint = drawingOption.showLastPoint
             self.showTrace = drawingOption.showTrace
             self.showReferenceLine = drawingOption.showReferenceLine
-            self.lastPointColor = drawingOption.lastPointColor
+            //self.lastPointColor = drawingOption.lastPointColor
             self.traceColor = drawingOption.traceColor
             self.referenceColor = drawingOption.referenceColor
-            self.lastPointSize = drawingOption.lastPointSize
+            //self.lastPointSize = drawingOption.lastPointSize
             self.referenceLineWidth = drawingOption.referenceLineWidth
             self.traceWidth = drawingOption.traceWidth
+            self.referenceLineOption = drawingOption.referenceLineOption ?? .lastOne
+            self.traceOption = drawingOption.traceOption ?? .all
             
             trace = .initFromOrigin(richPoints: [])
         }
@@ -51,33 +55,42 @@ struct BezierTimeSeriesPointsReducer: ReducerProtocol{
             var lastPointSize : Double = 5
             var referenceLineWidth : Double = 2
             var traceWidth : Double = 2
+            var traceOption : BezierTimeSeriesDrawingOption.TraceOption = .all
+            var referenceLineOption : BezierTimeSeriesDrawingOption.ReferenceLineOption = .lastOne
             
             func updateState( state: inout State){
                 state.plot = self.plot
-                state.showLastPoint = self.showLastPoint
+//                state.showLastPoint = self.showLastPoint
                 state.showTrace = self.showTrace
                 state.showReferenceLine = self.showReferenceLine
-                state.lastPointColor = self.lastPointColor
+                //state.lastPointColor = self.lastPointColor
                 state.traceColor = self.traceColor
                 state.referenceColor = self.referenceColor
-                state.lastPointSize = self.lastPointSize
+                //state.lastPointSize = self.lastPointSize
                 state.referenceLineWidth = self.referenceLineWidth
                 state.traceWidth = self.traceWidth
+                state.referenceLineOption = self.referenceLineOption
+                state.traceOption = self.traceOption
+                
+                
+                
             }
             init(){
                 
             }
             init(from state: State){
                 self.plot = state.plot
-                self.showLastPoint = state.showLastPoint
+                //self.showLastPoint = state.showLastPoint
                 self.showTrace = state.showTrace
                 self.showReferenceLine = state.showReferenceLine
-                self.lastPointColor = state.lastPointColor
+                //self.lastPointColor = state.lastPointColor
                 self.traceColor = state.traceColor
                 self.referenceColor = state.referenceColor
-                self.lastPointSize = state.lastPointSize
+                //self.lastPointSize = state.lastPointSize
                 self.referenceLineWidth = state.referenceLineWidth
                 self.traceWidth = state.traceWidth
+                self.referenceLineOption = state.referenceLineOption
+                self.traceOption = state.traceOption
             }
             
         }
@@ -104,8 +117,13 @@ struct BezierTimeSeriesPointsReducer: ReducerProtocol{
                 let beforeUpdate = State.PopoverEditingState(from: state)
                 value.updateState(state: &state)
                 if beforeUpdate != value{
-                    state.popoverEditingState!.plot = true
-                    return EffectTask(value: .plot(true))
+                    if beforeUpdate.plot && !value.plot{
+                        return .none
+                    }
+                    else{
+                        state.popoverEditingState!.plot = true
+                        return EffectTask(value: .plot(true))
+                    }
                 }
                 
             }

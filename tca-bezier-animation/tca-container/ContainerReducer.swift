@@ -94,6 +94,7 @@ struct ContainerReducer: ReducerProtocol {
                 switch timerAction{
                 case .startFromTick(let tick):
                     return EffectTask(value: .jointBezierCurveReducer(.recalculateTrace(tick: tick, totalTicks: state.timer.totalTicks)))
+                        .debounce(id: DebounceID(), for: 0.001, scheduler: DispatchQueue.main)
 
                 case .stepForward:
                     return

@@ -14,22 +14,26 @@ struct PointEditingStatePopoverView: View {
     var body: some View {
         
         Form{
-            HStack{
-                Text("x: \(Int(editingState.point.x))")
-                Slider(value: $editingState.point.x,
-                       in: 0...environmentVariables.canvasSize.width).padding(10)
+            Section("coordinate") {
+                HStack{
+                    Text("X: \(Int(editingState.point.x))")
+                    Slider(value: $editingState.point.x,
+                           in: 0...environmentVariables.canvasSize.width).padding(10)
+                }
+                HStack{
+                    Text("Y: \(Int(editingState.point.y))")
+                    Slider(value: $editingState.point.y,
+                           in: 0...environmentVariables.canvasSize.height).padding(10)
+                }
             }
-            HStack{
-                Text("y: \(Int(editingState.point.y))")
-                Slider(value: $editingState.point.y,
-                       in: 0...environmentVariables.canvasSize.height).padding(10)
-            }
-            HStack{
-                ColorPicker("color", selection: $editingState.color)
-            }
-            HStack{
-                Text("size: \(Int(editingState.size))")
-                Slider(value: $editingState.size, in: 2...30).padding(10)
+            Section{
+                HStack{
+                    ColorPicker("Color", selection: $editingState.color)
+                }
+                HStack{
+                    Text("Size")
+                    Slider(value: $editingState.size, in: 2...20).padding(10)
+                }
             }
         }
         
