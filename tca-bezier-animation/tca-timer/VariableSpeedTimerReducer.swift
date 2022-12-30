@@ -51,10 +51,14 @@ struct VariableSpeedTimerReducer: ReducerProtocol {
     func reduce(into state: inout State, action: Action) -> EffectTask<Action> {
         switch action{
         case .stepForward:
+            if !state.isTimerOn{
+                return EffectTask(value: .toggleTimer(false))
+            }
             state.currentTick += 1
             if state.currentTick > state.totalTicks{
                 return EffectTask(value: .startFromTick(0))
             }
+            
             return .none
         case .restartTimer:
             return .concatenate(EffectTask(value: .toggleTimer(false)),

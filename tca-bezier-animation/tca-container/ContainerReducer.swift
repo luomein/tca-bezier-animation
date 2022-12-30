@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 import IdentifiedCollections
 
+
 struct ContainerReducer: ReducerProtocol {
     
     private class EnvironmentVariablesWrapper{
@@ -18,9 +19,10 @@ struct ContainerReducer: ReducerProtocol {
     
     private var environmentVariablesWrapper = EnvironmentVariablesWrapper()
     
+    
     struct State: Equatable {
         var timer = VariableSpeedTimerReducer.State()
-
+        var snapShot : UIImage? // = UIImage()
         var bezierCurve : MultiLayerBezierCurveReducer.State = .init()
     }
     enum Action : Equatable{
@@ -31,7 +33,8 @@ struct ContainerReducer: ReducerProtocol {
         
         case jointTimerReducer(VariableSpeedTimerReducer.Action)
         case jointBezierCurveReducer(MultiLayerBezierCurveReducer.Action)
-        
+        case generateSnapshot
+        case updateSnapshot(UIImage?)
     }
     func initDefaultControlPoints()->MultipleTimeSeriesPointsReducer.State{
         var richPoints: [RichPoint]!
@@ -46,7 +49,17 @@ struct ContainerReducer: ReducerProtocol {
         let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
         return controlPoints
     }
+    @MainActor
+    func generateSnapshot(state: State)->UIImage?{
+        return nil
+        //it is not working yet
+        let renderer = ImageRenderer(content: MultiLayerBezierCurveAllReferenceLineView(bezierTimeSeries: state.bezierCurve.bezier1st, referenceTimeSeries: state.bezierCurve.controlPoints))
+        renderer.scale = UIScreen.main.scale
+        return renderer.uiImage
+    }
+    
     struct DebounceID : Hashable{}
+    
     var body: some ReducerProtocol<State, Action> {
         Scope(state: \.timer, action: /Action.jointTimerReducer) {
             VariableSpeedTimerReducer()
@@ -59,6 +72,16 @@ struct ContainerReducer: ReducerProtocol {
 
         Reduce{state, action  in
             switch action{
+            case .generateSnapshot :
+                return .run{[state] sender in
+                    let uiImage = await generateSnapshot(state: state)
+                    let image = Image(uiImage: uiImage!)
+                    //print(image)
+                    await sender.send(.updateSnapshot(uiImage))
+                }
+            case .updateSnapshot(let value):
+                state.snapShot = value
+                return .none
             case .redraw(let controlPoints):
                 state.bezierCurve.controlPoints = controlPoints
                 return EffectTask(value: .jointTimerReducer(.startFromTick(0)))
