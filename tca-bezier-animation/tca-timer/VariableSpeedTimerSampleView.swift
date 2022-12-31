@@ -7,6 +7,7 @@
 
 import SwiftUI
 import ComposableArchitecture
+import VariableSpeedTimer
 
 struct TimerTickerView: View {
     let store: StoreOf<VariableSpeedTimerReducer>

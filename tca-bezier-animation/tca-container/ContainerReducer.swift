@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 import SwiftUI
 import IdentifiedCollections
-
+import VariableSpeedTimer
 
 struct ContainerReducer: ReducerProtocol {
     

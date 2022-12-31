@@ -47,6 +47,7 @@
 		88D577F229532A280030FCB4 /* DefaultBezier3rdDrawingOption.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D577F129532A280030FCB4 /* DefaultBezier3rdDrawingOption.json */; };
 		88D577F42953560B0030FCB4 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D577F32953560B0030FCB4 /* UserDefaultsManager.swift */; };
 		88F2B534295F0ECD007DEC2A /* ShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B533295F0ECD007DEC2A /* ShareLinkView.swift */; };
+		88F2B538295FD40D007DEC2A /* VariableSpeedTimer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B537295FD40D007DEC2A /* VariableSpeedTimer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88C04746294DCF260075DE44 /* SwiftUINavigation in Frameworks */,
+				88F2B538295FD40D007DEC2A /* VariableSpeedTimer in Frameworks */,
 				880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +293,7 @@
 			packageProductDependencies = (
 				880099B3293A2E17007B85D0 /* ComposableArchitecture */,
 				88C04745294DCF260075DE44 /* SwiftUINavigation */,
+				88F2B537295FD40D007DEC2A /* VariableSpeedTimer */,
 			);
 			productName = labPlayground;
 			productReference = 88009980293A2D9E007B85D0 /* tca-bezier-animation.app */;
@@ -367,6 +370,7 @@
 			packageReferences = (
 				880099B2293A2E17007B85D0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				88C04744294DCF260075DE44 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
+				88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */,
 			);
 			productRefGroup = 88009981293A2D9E007B85D0 /* Products */;
 			projectDirPath = "";
@@ -1043,6 +1047,14 @@
 				minimumVersion = 0.4.5;
 			};
 		};
+		88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luomein/variable-speed-timer";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1055,6 +1067,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 88C04744294DCF260075DE44 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
 			productName = SwiftUINavigation;
+		};
+		88F2B537295FD40D007DEC2A /* VariableSpeedTimer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */;
+			productName = VariableSpeedTimer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
