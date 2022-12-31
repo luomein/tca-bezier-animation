@@ -8,12 +8,13 @@
 import Foundation
 import ComposableArchitecture
 import IdentifiedCollections
+import MultipleTimeSeriesReducer
 
 struct MultiLayerBezierCurveReducer : ReducerProtocol{
     @Dependency(\.environmentVariables) var environmentVariables
     @Dependency(\.uuid) var uuid
     struct State: Equatable {
-        var controlPoints: MultipleTimeSeriesPointsReducer.State = .initFromOrigin(points: [])
+        var controlPoints: MultipleTimeSeriesReducer.State = .initFromOrigin(points: [])
         
         var bezier1st: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier1stDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier1st.rawValue) )
                                                                     //loadJsonFromBundle(filename: "DefaultBezier1stDrawingOption"))
@@ -47,7 +48,7 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         case recalculateTrace(tick: Double, totalTicks: Double)
         case calculateNewPoint(t:Double)
         case notificationPosizitionChanged
-        case jointControlPointsReducer(MultipleTimeSeriesPointsReducer.Action)
+        case jointControlPointsReducer(MultipleTimeSeriesReducer.Action)
         case jointBezier1stReducer(BezierTimeSeriesPointsReducer.Action)
         case jointBezier2ndReducer(BezierTimeSeriesPointsReducer.Action)
         case jointBezier3rdReducer(BezierTimeSeriesPointsReducer.Action)
@@ -56,7 +57,7 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
     struct DebounceID : Hashable{}
     var body: some ReducerProtocol<State, Action> {
         Scope(state: \.controlPoints, action: /Action.jointControlPointsReducer) {
-            MultipleTimeSeriesPointsReducer()
+            MultipleTimeSeriesReducer()
             
         }
         Scope(state: \.bezier1st, action: /Action.jointBezier1stReducer) {
@@ -146,7 +147,7 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         calculateNewPoint(referencePoints: state.bezier1st.trace, t: t, state: &state.bezier2nd.trace)
         calculateNewPoint(referencePoints: state.bezier2nd.trace, t: t, state: &state.bezier3rd.trace)
     }
-        func calculateNewPoint(referencePoints: MultipleTimeSeriesPointsReducer.State, t: Double, state: inout MultipleTimeSeriesPointsReducer.State){
+        func calculateNewPoint(referencePoints: MultipleTimeSeriesReducer.State, t: Double, state: inout MultipleTimeSeriesReducer.State){
             //assert(referencePoints.multipleSeries.count>=2)
             guard referencePoints.multipleSeries.count >= 2 else{return}
             var referencePointsCopy = referencePoints
@@ -161,8 +162,8 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
                 let combined = Array(zip(state.multipleSeries, result))
                 state.multipleSeries = IdentifiedArray(uniqueElements:
                                                         combined.map({
-                    SingleTimeSeriesPointsReducer.State(id: $0.0.id, timeSeries: $0.0.timeSeries +
-                                                        SingleTimeSeriesPointsReducer.State.initFromOrigin(point: $0.1,
+                    SingleTimeSeriesReducer.State(id: $0.0.id, timeSeries: $0.0.timeSeries +
+                                                        SingleTimeSeriesReducer.State.initFromOrigin(point: $0.1,
                                                                                                            stateId: uuid(), pointID: uuid()                                          ).timeSeries
                     )
                 })
@@ -170,7 +171,7 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
 
             }else{
                 state.multipleSeries = IdentifiedArray(uniqueElements: result.map({ //IdentifiedCGPointArray(id: uuid(), ptArray:  [$0] )
-                    SingleTimeSeriesPointsReducer.State.initFromOrigin(point: $0,
+                    SingleTimeSeriesReducer.State.initFromOrigin(point: $0,
                     stateId: uuid(), pointID: uuid()
                     )
                     

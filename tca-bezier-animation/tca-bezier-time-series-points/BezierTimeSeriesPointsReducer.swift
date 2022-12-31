@@ -12,7 +12,7 @@ import ComposableArchitecture
 struct BezierTimeSeriesPointsReducer: ReducerProtocol{
     @Dependency(\.uuid) var uuid
     struct State: Equatable {
-        var trace : MultipleTimeSeriesPointsReducer.State
+        var trace : MultipleTimeSeriesReducer.State
         //var showLastPoint = false
         var showTrace = true
         var showReferenceLine = true

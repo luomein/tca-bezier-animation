@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import VariableSpeedTimer
+import MultipleTimeSeriesReducer
 
 struct PlottingView: View {
     let store: StoreOf<ContainerReducer>

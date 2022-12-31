@@ -9,65 +9,26 @@ import Foundation
 import IdentifiedCollections
 import ComposableArchitecture
 import SwiftUI
+import MultipleTimeSeriesReducer
 
-struct SingleTimeSeriesPointsReducer: ReducerProtocol {
-    struct State: Equatable, Identifiable{
-        var id: UUID
-        var timeSeries : IdentifiedArray<PointReducer.State.ID, PointReducer.State>
-        
-        static func initFromOrigin(point: CGPoint, stateId: UUID = UUID(),
-                                   pointID: UUID = UUID() )->State{
-            return State(id: stateId, timeSeries: IdentifiedArray(uniqueElements: [
-                PointReducer.State(point: point, size: 10, color: .black, id: pointID)
-            ]))
-        }
-        static func initFromOrigin(richPoint: RichPoint, stateId: UUID = UUID(),
-                                           pointID: UUID = UUID() )->State{
-                    return State(id: stateId, timeSeries: IdentifiedArray(uniqueElements: [
-                        PointReducer.State(point: richPoint.point, size: richPoint.size, color: richPoint.color, id: pointID)
-                    ]))
-                }
-    }
-    enum Action : Equatable{
-        case notificationPosizitionChanged
-        case jointReducerAction(PointReducer.State.ID, PointReducer.Action)
-    }
-    var body: some ReducerProtocol<State, Action> {
-        Reduce{state, action  in
-            switch action{
-            case .jointReducerAction(_, let pointAction):
-                switch pointAction{
-                case .notificationPosizitionChanged:
-                    return EffectTask(value: .notificationPosizitionChanged)
-                default:
-                    return .none
-                }
-            case .notificationPosizitionChanged:
-                return .none
-            }
-        }
-        .forEach(\.timeSeries, action: /Action.jointReducerAction) {
-            PointReducer()
-        }
-    }
-}
-struct MultipleTimeSeriesPointsReducer: ReducerProtocol {
+
+struct MultipleTimeSeriesReducer: ReducerProtocol {
     struct State: Equatable{
         
         
         //var id: UUID
-        var multipleSeries : IdentifiedArray<SingleTimeSeriesPointsReducer.State.ID, SingleTimeSeriesPointsReducer.State>
+        var multipleSeries : IdentifiedArray<SingleTimeSeriesReducer.State.ID, SingleTimeSeriesReducer.State>
          = IdentifiedArray(uniqueElements: [] )
 
         static func initFromOrigin(points: [CGPoint])->State{
             return State(multipleSeries: IdentifiedArray(uniqueElements: points.map({
-                SingleTimeSeriesPointsReducer.State.initFromOrigin(point: $0)
+                SingleTimeSeriesReducer.State.initFromOrigin(point: $0)
             })))
 
         }
         static func initFromOrigin(richPoints: [RichPoint])->State{
             return State(multipleSeries: IdentifiedArray(uniqueElements: richPoints.map({
-                SingleTimeSeriesPointsReducer.State.initFromOrigin(richPoint: $0)
+                SingleTimeSeriesReducer.State.initFromOrigin(richPoint: $0)
             })))
             
         }
@@ -85,7 +46,7 @@ struct MultipleTimeSeriesPointsReducer: ReducerProtocol {
     }
     enum Action : Equatable{
         case notificationPosizitionChanged
-        case jointReducerAction(SingleTimeSeriesPointsReducer.State.ID, SingleTimeSeriesPointsReducer.Action)
+        case jointReducerAction(SingleTimeSeriesReducer.State.ID, SingleTimeSeriesReducer.Action)
 //        case jointLatestPointsReducerAction(PointReducer.State.ID,PointReducer.Action)
     }
     var body: some ReducerProtocol<State, Action> {
@@ -103,7 +64,7 @@ struct MultipleTimeSeriesPointsReducer: ReducerProtocol {
             }
         }
         .forEach(\.multipleSeries, action: /Action.jointReducerAction) {
-            SingleTimeSeriesPointsReducer()
+            SingleTimeSeriesReducer()
         }
 //        .forEach(\.latestPoints, action: /Action.jointLatestPointsReducerAction) {
 //            PointReducer()

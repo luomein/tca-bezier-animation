@@ -53,7 +53,7 @@ class RichPointTests: XCTestCase{
 """
         let jsonData = jsonString.data(using: .utf8)!
         let richPoints: [RichPoint] = try! JSONDecoder().decode([RichPoint].self, from: jsonData)
-        let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
+        let controlPoints = MultipleTimeSeriesReducer.State.initFromOrigin(richPoints: richPoints)
         print(controlPoints)
     }
 }

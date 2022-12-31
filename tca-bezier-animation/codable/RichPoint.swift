@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import MultipleTimeSeriesReducer
 
 struct  RichPoint : Codable{
     var point : CGPoint

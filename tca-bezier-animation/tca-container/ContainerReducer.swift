@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUI
 import IdentifiedCollections
 import VariableSpeedTimer
+import MultipleTimeSeriesReducer
 
 struct ContainerReducer: ReducerProtocol {
     
@@ -27,7 +28,7 @@ struct ContainerReducer: ReducerProtocol {
     }
     enum Action : Equatable{
         case appearOnCanvas(CGSize)
-        case redraw(MultipleTimeSeriesPointsReducer.State)
+        case redraw(MultipleTimeSeriesReducer.State)
         case checkCanvasBoundary(CGSize)
         case setEnvironmentVariables(EnvironmentVariables)
         
@@ -36,7 +37,7 @@ struct ContainerReducer: ReducerProtocol {
         case generateSnapshot
         case updateSnapshot(UIImage?)
     }
-    func initDefaultControlPoints()->MultipleTimeSeriesPointsReducer.State{
+    func initDefaultControlPoints()->MultipleTimeSeriesReducer.State{
         var richPoints: [RichPoint]!
         if let data = UserDefaults.standard.object(forKey: SnapShotJsonFileName.controlPoints.rawValue) as? Data {
             richPoints = loadJsonFromData(data: data)
@@ -46,7 +47,7 @@ struct ContainerReducer: ReducerProtocol {
             richPoints = loadJsonFromBundle(filename: "DefaultControlPoints")
             //print("file not exists")
         }
-        let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints: richPoints)
+        let controlPoints = MultipleTimeSeriesReducer.State.initFromOrigin(richPoints: richPoints)
         return controlPoints
     }
     @MainActor
@@ -103,7 +104,7 @@ struct ContainerReducer: ReducerProtocol {
                                   , size: $0.timeSeries.last!.size,
                                   color: $0.timeSeries.last!.color)
                     })
-                    let controlPoints = MultipleTimeSeriesPointsReducer.State.initFromOrigin(richPoints:  richPoints )
+                    let controlPoints = MultipleTimeSeriesReducer.State.initFromOrigin(richPoints:  richPoints )
                     return EffectTask(value: .redraw(controlPoints))
                 }
                 return .none
