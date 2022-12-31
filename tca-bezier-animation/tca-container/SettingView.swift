@@ -8,6 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import SwiftUINavigation
+import VariableSpeedTimer
 
 struct SettingView: View {
     let store: StoreOf<ContainerReducer>
@@ -19,7 +20,7 @@ struct SettingView: View {
                     MultipleTimeSeriesTextView(store: store.scope(state: \.bezierCurve.controlPoints, action: {.jointBezierCurveReducer(.jointControlPointsReducer($0))}))
                 }
                 Section("Timer") {
-                    TimerConfigSectionView(store: store.scope(state: \.timer,action: {.jointTimerReducer($0)}))
+                    TimerConfigView(store: store.scope(state: \.timer,action: {.jointTimerReducer($0)}))
                 }
                 Section("Bezier Curve") {
                     List{
