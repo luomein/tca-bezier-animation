@@ -8,7 +8,7 @@
 import SwiftUI
 import ComposableArchitecture
 import SwiftUINavigation
-
+import LuomeinSwiftBasicTools
 
 struct BezierTimeSeriesConfigListItemView: View {
     let store: StoreOf<BezierTimeSeriesPointsReducer>

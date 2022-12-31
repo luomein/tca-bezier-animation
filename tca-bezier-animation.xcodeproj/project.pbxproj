@@ -43,6 +43,7 @@
 		88F2B53A295FE7D4007DEC2A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B539295FE7D4007DEC2A /* TestView.swift */; };
 		88F2B53B295FE814007DEC2A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B539295FE7D4007DEC2A /* TestView.swift */; };
 		88F2B53E29600701007DEC2A /* MultipleTimeSeriesReducer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B53D29600701007DEC2A /* MultipleTimeSeriesReducer */; };
+		88F2B54129603495007DEC2A /* LuomeinSwiftBasicTools in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +107,7 @@
 			files = (
 				88C04746294DCF260075DE44 /* SwiftUINavigation in Frameworks */,
 				88F2B53E29600701007DEC2A /* MultipleTimeSeriesReducer in Frameworks */,
+				88F2B54129603495007DEC2A /* LuomeinSwiftBasicTools in Frameworks */,
 				88F2B538295FD40D007DEC2A /* VariableSpeedTimer in Frameworks */,
 				880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */,
 			);
@@ -269,6 +271,7 @@
 				88C04745294DCF260075DE44 /* SwiftUINavigation */,
 				88F2B537295FD40D007DEC2A /* VariableSpeedTimer */,
 				88F2B53D29600701007DEC2A /* MultipleTimeSeriesReducer */,
+				88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */,
 			);
 			productName = labPlayground;
 			productReference = 88009980293A2D9E007B85D0 /* tca-bezier-animation.app */;
@@ -347,6 +350,7 @@
 				88C04744294DCF260075DE44 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
 				88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */,
 				88F2B53C29600701007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */,
+				88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */,
 			);
 			productRefGroup = 88009981293A2D9E007B85D0 /* Products */;
 			projectDirPath = "";
@@ -1033,6 +1037,14 @@
 				kind = branch;
 			};
 		};
+		88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luomein/luomein-swift-basic-tools";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1055,6 +1067,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 88F2B53C29600701007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */;
 			productName = MultipleTimeSeriesReducer;
+		};
+		88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */;
+			productName = LuomeinSwiftBasicTools;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
