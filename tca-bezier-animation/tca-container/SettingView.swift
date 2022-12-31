@@ -9,6 +9,7 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftUINavigation
 import VariableSpeedTimer
+import MultipleTimeSeriesReducer
 
 struct SettingView: View {
     let store: StoreOf<ContainerReducer>

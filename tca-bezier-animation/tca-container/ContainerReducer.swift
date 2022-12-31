@@ -11,6 +11,7 @@ import SwiftUI
 import IdentifiedCollections
 import VariableSpeedTimer
 import MultipleTimeSeriesReducer
+import LuomeinSwiftBasicTools
 
 struct ContainerReducer: ReducerProtocol {
     
@@ -44,7 +45,7 @@ struct ContainerReducer: ReducerProtocol {
 
         }
         else{
-            richPoints = loadJsonFromBundle(filename: "DefaultControlPoints")
+            richPoints = loadJsonFromBundle(filename: "DefaultControlPoints", bundle: Bundle.main)
             //print("file not exists")
         }
         let controlPoints = MultipleTimeSeriesReducer.State.initFromOrigin(richPoints: richPoints)

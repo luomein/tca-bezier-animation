@@ -9,6 +9,7 @@ import Foundation
 import ComposableArchitecture
 import IdentifiedCollections
 import MultipleTimeSeriesReducer
+import LuomeinSwiftBasicTools
 
 struct MultiLayerBezierCurveReducer : ReducerProtocol{
     @Dependency(\.environmentVariables) var environmentVariables
@@ -30,7 +31,7 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
                 drawingOption = loadJsonFromData(data: data)
             }
             else{
-                drawingOption = loadJsonFromBundle(filename: bundleFileName)
+                drawingOption = loadJsonFromBundle(filename: bundleFileName, bundle: Bundle.main)
             }
             return drawingOption
         }
