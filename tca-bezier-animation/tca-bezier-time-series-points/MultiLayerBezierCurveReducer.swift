@@ -10,6 +10,7 @@ import ComposableArchitecture
 import IdentifiedCollections
 import MultipleTimeSeriesReducer
 import LuomeinSwiftBasicTools
+import BezierTimeSeriesReducer
 
 struct MultiLayerBezierCurveReducer : ReducerProtocol{
     @Dependency(\.environmentVariables) var environmentVariables
@@ -17,12 +18,12 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
     struct State: Equatable {
         var controlPoints: MultipleTimeSeriesReducer.State = .initFromOrigin(points: [])
         
-        var bezier1st: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier1stDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier1st.rawValue) )
+        var bezier1st: SingleBezierTimeSeriesReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier1stDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier1st.rawValue) )
                                                                     //loadJsonFromBundle(filename: "DefaultBezier1stDrawingOption"))
             //.init(trace: .initFromOrigin(points: []))
-        var bezier2nd: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier2ndDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier2nd.rawValue) )
+        var bezier2nd: SingleBezierTimeSeriesReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier2ndDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier2nd.rawValue) )
             //.init(drawingOption: loadJsonFromBundle(filename: "DefaultBezier2ndDrawingOption"))
-        var bezier3rd: BezierTimeSeriesPointsReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier3rdDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier3rd.rawValue) )
+        var bezier3rd: SingleBezierTimeSeriesReducer.State = .init(drawingOption: loadData(bundleFileName: "DefaultBezier3rdDrawingOption", userDefaultsKeyName: SnapShotJsonFileName.bezier3rd.rawValue) )
             //.init(drawingOption: loadJsonFromBundle(filename: "DefaultBezier3rdDrawingOption"))
         
         static func loadData(bundleFileName: String, userDefaultsKeyName: String)->BezierTimeSeriesDrawingOption{
@@ -50,9 +51,9 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
         case calculateNewPoint(t:Double)
         case notificationPosizitionChanged
         case jointControlPointsReducer(MultipleTimeSeriesReducer.Action)
-        case jointBezier1stReducer(BezierTimeSeriesPointsReducer.Action)
-        case jointBezier2ndReducer(BezierTimeSeriesPointsReducer.Action)
-        case jointBezier3rdReducer(BezierTimeSeriesPointsReducer.Action)
+        case jointBezier1stReducer(SingleBezierTimeSeriesReducer.Action)
+        case jointBezier2ndReducer(SingleBezierTimeSeriesReducer.Action)
+        case jointBezier3rdReducer(SingleBezierTimeSeriesReducer.Action)
         case saveState(Data, String)
     }
     struct DebounceID : Hashable{}
@@ -62,13 +63,13 @@ struct MultiLayerBezierCurveReducer : ReducerProtocol{
             
         }
         Scope(state: \.bezier1st, action: /Action.jointBezier1stReducer) {
-            BezierTimeSeriesPointsReducer()
+            SingleBezierTimeSeriesReducer()
         }
         Scope(state: \.bezier2nd, action: /Action.jointBezier2ndReducer) {
-            BezierTimeSeriesPointsReducer()
+            SingleBezierTimeSeriesReducer()
         }
         Scope(state: \.bezier3rd, action: /Action.jointBezier3rdReducer) {
-            BezierTimeSeriesPointsReducer()
+            SingleBezierTimeSeriesReducer()
         }
         Reduce{state, action  in
             switch action{

@@ -10,7 +10,7 @@ import ComposableArchitecture
 import MultipleTimeSeriesReducer
 
 struct MultiLayerBezierCurveAllReferenceLineView: View {
-    let bezierTimeSeries : BezierTimeSeriesPointsReducer.State
+    let bezierTimeSeries : SingleBezierTimeSeriesReducer.State
     let referenceTimeSeries : MultipleTimeSeriesReducer.State
     var body: some View {
         
@@ -36,7 +36,7 @@ struct MultiLayerBezierCurveAllReferenceLineView: View {
     }
 }
 struct MultiLayerBezierCurveReferenceLineView: View {
-    let bezierTimeSeries : BezierTimeSeriesPointsReducer.State
+    let bezierTimeSeries : SingleBezierTimeSeriesReducer.State
     let referenceTimeSeries : MultipleTimeSeriesReducer.State
     var body: some View {
         

@@ -10,7 +10,7 @@ import ComposableArchitecture
 import SwiftUINavigation
 
 struct BezierTimeSeriesPopoverView: View {
-    @Binding var editingState : BezierTimeSeriesPointsReducer.State.PopoverEditingState
+    @Binding var editingState : SingleBezierTimeSeriesReducer.State.PopoverEditingState
     let title: String
     
     var body: some View {

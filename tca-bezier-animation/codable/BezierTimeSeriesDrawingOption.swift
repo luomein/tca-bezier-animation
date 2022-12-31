@@ -33,7 +33,7 @@ struct BezierTimeSeriesDrawingOption : Codable{
         case all = 1
     }
     
-    static func initFromState(state: BezierTimeSeriesPointsReducer.State)->BezierTimeSeriesDrawingOption{
+    static func initFromState(state: SingleBezierTimeSeriesReducer.State)->BezierTimeSeriesDrawingOption{
         return BezierTimeSeriesDrawingOption(
             //showLastPoint: state.showLastPoint,
             showTrace: state.showTrace,
@@ -50,7 +50,7 @@ struct BezierTimeSeriesDrawingOption : Codable{
         )
     }
     
-    static func encodedFromState(state: BezierTimeSeriesPointsReducer.State)->Data{
+    static func encodedFromState(state: SingleBezierTimeSeriesReducer.State)->Data{
             let encoder = JSONEncoder()
             do{
                 return try encoder.encode(
