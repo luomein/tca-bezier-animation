@@ -21,11 +21,9 @@
 		886FB3BB29517E9900712049 /* Snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 886FB3BA29517E9900712049 /* Snapfile */; };
 		8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */; };
 		8882B1A1295019DF00136AD7 /* MultiLayerBezierCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */; };
-		8882B1A329504E7900136AD7 /* FitPopoverViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */; };
 		889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */; };
 		889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */; };
 		88C04746294DCF260075DE44 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 88C04745294DCF260075DE44 /* SwiftUINavigation */; };
-		88C0474B294DD2950075DE44 /* TimeSeriesPointsReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0474A294DD2950075DE44 /* TimeSeriesPointsReducer.swift */; };
 		88C0474D294DD3930075DE44 /* PointInteractiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0474C294DD3930075DE44 /* PointInteractiveView.swift */; };
 		88C0474F294DD48D0075DE44 /* ContainerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0474E294DD48D0075DE44 /* ContainerLayoutView.swift */; };
 		88C04751294DD58D0075DE44 /* ContainerReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C04750294DD58D0075DE44 /* ContainerReducer.swift */; };
@@ -81,10 +79,8 @@
 		886FB3BA29517E9900712049 /* Snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
 		8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimerSeriesTraceView.swift; sourceTree = "<group>"; };
 		8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveView.swift; sourceTree = "<group>"; };
-		8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FitPopoverViewModifier.swift; sourceTree = "<group>"; };
 		889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesSampleView.swift; sourceTree = "<group>"; };
 		889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveReducer.swift; sourceTree = "<group>"; };
-		88C0474A294DD2950075DE44 /* TimeSeriesPointsReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSeriesPointsReducer.swift; sourceTree = "<group>"; };
 		88C0474C294DD3930075DE44 /* PointInteractiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointInteractiveView.swift; sourceTree = "<group>"; };
 		88C0474E294DD48D0075DE44 /* ContainerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerLayoutView.swift; sourceTree = "<group>"; };
 		88C04750294DD58D0075DE44 /* ContainerReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerReducer.swift; sourceTree = "<group>"; };
@@ -163,7 +159,6 @@
 				880099BB293AC725007B85D0 /* tca-container */,
 				88009983293A2D9E007B85D0 /* TCABezierAnimationApp.swift */,
 				885C4012294E98F000DE7143 /* EnvironmentVariables.swift */,
-				8882B1A229504E7900136AD7 /* FitPopoverViewModifier.swift */,
 				88009987293A2D9F007B85D0 /* Assets.xcassets */,
 				88009989293A2D9F007B85D0 /* Preview Content */,
 			);
@@ -226,7 +221,6 @@
 		88C04747294DCFC90075DE44 /* tca-time-series-points */ = {
 			isa = PBXGroup;
 			children = (
-				88C0474A294DD2950075DE44 /* TimeSeriesPointsReducer.swift */,
 				88C0474C294DD3930075DE44 /* PointInteractiveView.swift */,
 			);
 			path = "tca-time-series-points";
@@ -410,7 +404,6 @@
 				88D577E22952D79B0030FCB4 /* AppFileManager.swift in Sources */,
 				889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */,
 				88C0474D294DD3930075DE44 /* PointInteractiveView.swift in Sources */,
-				88C0474B294DD2950075DE44 /* TimeSeriesPointsReducer.swift in Sources */,
 				88D577EA295322840030FCB4 /* JsonLoader.swift in Sources */,
 				8882B1A1295019DF00136AD7 /* MultiLayerBezierCurveView.swift in Sources */,
 				88C0474F294DD48D0075DE44 /* ContainerLayoutView.swift in Sources */,
@@ -421,7 +414,6 @@
 				88C04751294DD58D0075DE44 /* ContainerReducer.swift in Sources */,
 				889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */,
 				88C04755294DEE1E0075DE44 /* SettingView.swift in Sources */,
-				8882B1A329504E7900136AD7 /* FitPopoverViewModifier.swift in Sources */,
 				88F2B53B295FE814007DEC2A /* TestView.swift in Sources */,
 				88009984293A2D9E007B85D0 /* TCABezierAnimationApp.swift in Sources */,
 			);

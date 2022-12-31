@@ -10,18 +10,7 @@ import ComposableArchitecture
 import SwiftUINavigation
 import MultipleTimeSeriesReducer
 
-struct SingleTimeSeriesPointsView: View{
-    let store: StoreOf<SingleTimeSeriesReducer>
-    var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            ZStack{
-                ForEachStore(store.scope(state: \.timeSeries, action: {SingleTimeSeriesReducer.Action.jointReducerAction($0.0,$0.1) })) { singleStore in
-                    PointInteractiveView(store: singleStore)
-                                    }
-                                }
-        }
-    }
-}
+
 
 struct SingleTimeSeriesTextView: View{
     let store: StoreOf<SingleTimeSeriesReducer>

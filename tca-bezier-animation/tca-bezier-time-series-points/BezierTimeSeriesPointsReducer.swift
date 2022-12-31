@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ComposableArchitecture
+import MultipleTimeSeriesReducer
 
 struct BezierTimeSeriesPointsReducer: ReducerProtocol{
     @Dependency(\.uuid) var uuid
