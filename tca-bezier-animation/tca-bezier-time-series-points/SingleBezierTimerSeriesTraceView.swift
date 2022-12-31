@@ -7,8 +7,9 @@
 
 import SwiftUI
 import ComposableArchitecture
+import BezierTimeSeriesReducer
 
-struct BezierTimerSeriesTraceView: View {
+struct SingleBezierTimerSeriesTraceView: View {
     let store: StoreOf<SingleBezierTimeSeriesReducer>
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
@@ -26,7 +27,7 @@ struct BezierTimerSeriesTraceView: View {
         }
     }
 }
-struct BezierTimerSeriesLastPointsView: View {
+struct SingleBezierTimerSeriesLastPointsView: View {
     let store: StoreOf<SingleBezierTimeSeriesReducer>
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in

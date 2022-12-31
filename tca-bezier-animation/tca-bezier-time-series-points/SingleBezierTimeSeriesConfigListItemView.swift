@@ -9,8 +9,9 @@ import SwiftUI
 import ComposableArchitecture
 import SwiftUINavigation
 import LuomeinSwiftBasicTools
+import BezierTimeSeriesReducer
 
-struct BezierTimeSeriesConfigListItemView: View {
+struct SingleBezierTimeSeriesConfigListItemView: View {
     let store: StoreOf<SingleBezierTimeSeriesReducer>
     let title: String
     var body: some View {
@@ -24,7 +25,7 @@ struct BezierTimeSeriesConfigListItemView: View {
                 }
             }
             .popover(unwrapping: viewStore.binding(get: \.popoverEditingState, send: SingleBezierTimeSeriesReducer.Action.popoverEditing) ) { $value in
-                BezierTimeSeriesPopoverView(editingState: $value, title: title)
+                SingleBezierTimeSeriesPopoverView(editingState: $value, title: title)
                     .modifier(FitPopoverViewModifier(width: 300, height: 800))
                         }
         }
@@ -35,7 +36,7 @@ struct BezierTimeSeriesSampleView_Previews: PreviewProvider {
     static var previews: some View {
         let editingState = SingleBezierTimeSeriesReducer.State.PopoverEditingState()
         WithState(initialValue: editingState) { $value in
-            BezierTimeSeriesPopoverView(editingState: $value, title: "test")
+            SingleBezierTimeSeriesPopoverView(editingState: $value, title: "test")
         }
         
     }

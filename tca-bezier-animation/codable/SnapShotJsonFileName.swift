@@ -7,6 +7,7 @@
 
 import Foundation
 import LuomeinSwiftBasicTools
+
 enum SnapShotJsonFileName : String{
     case controlPoints = "snapshotControlPoints.json"
     case bezier1st = "snapshotBezier1st.json"

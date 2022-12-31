@@ -12,6 +12,7 @@ import IdentifiedCollections
 import VariableSpeedTimer
 import MultipleTimeSeriesReducer
 import LuomeinSwiftBasicTools
+import BezierTimeSeriesReducer
 
 struct ContainerReducer: ReducerProtocol {
     

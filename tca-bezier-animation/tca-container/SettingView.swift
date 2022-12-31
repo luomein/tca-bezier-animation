@@ -10,6 +10,7 @@ import ComposableArchitecture
 import SwiftUINavigation
 import VariableSpeedTimer
 import MultipleTimeSeriesReducer
+import BezierTimeSeriesReducer
 
 struct SettingView: View {
     let store: StoreOf<ContainerReducer>
@@ -25,9 +26,9 @@ struct SettingView: View {
                 }
                 Section("Bezier Curve") {
                     List{
-                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier1st, action: {.jointBezierCurveReducer(.jointBezier1stReducer($0))}), title: "1st Order")
-                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier2nd, action: {.jointBezierCurveReducer(.jointBezier2ndReducer($0))}), title: "2nd Order")
-                        BezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier3rd, action: {.jointBezierCurveReducer(.jointBezier3rdReducer($0))}), title: "3rd Order")
+                        SingleBezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier1st, action: {.jointBezierCurveReducer(.jointBezier1stReducer($0))}), title: "1st Order")
+                        SingleBezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier2nd, action: {.jointBezierCurveReducer(.jointBezier2ndReducer($0))}), title: "2nd Order")
+                        SingleBezierTimeSeriesConfigListItemView(store: store.scope(state: \.bezierCurve.bezier3rd, action: {.jointBezierCurveReducer(.jointBezier3rdReducer($0))}), title: "3rd Order")
                     }
                 }
             }

@@ -8,8 +8,9 @@
 import SwiftUI
 import ComposableArchitecture
 import SwiftUINavigation
+import BezierTimeSeriesReducer
 
-struct BezierTimeSeriesPopoverView: View {
+struct SingleBezierTimeSeriesPopoverView: View {
     @Binding var editingState : SingleBezierTimeSeriesReducer.State.PopoverEditingState
     let title: String
     
@@ -20,13 +21,13 @@ struct BezierTimeSeriesPopoverView: View {
                 Toggle(title, isOn: $editingState.plot)
             }
             Section("Trace") {
-                
+
                 Toggle("Show", isOn: $editingState.showTrace)
                 Picker("Element", selection: $editingState.traceOption) {
                     Text("All").tag(BezierTimeSeriesDrawingOption.TraceOption.all)
                     Text("Last One").tag(BezierTimeSeriesDrawingOption.TraceOption.lastOne)
                 }
-                
+
                 ColorPicker("Color", selection: $editingState.traceColor)
                 HStack{
                     Text("Size")
@@ -36,13 +37,13 @@ struct BezierTimeSeriesPopoverView: View {
             }
 
             Section("Reference Line") {
-                
+
                 Toggle("Show", isOn: $editingState.showReferenceLine)
                 Picker("Element", selection: $editingState.referenceLineOption) {
                     Text("All").tag(BezierTimeSeriesDrawingOption.ReferenceLineOption.all)
                     Text("Last One").tag(BezierTimeSeriesDrawingOption.ReferenceLineOption.lastOne)
                 }
-                
+
                 ColorPicker("Color", selection: $editingState.referenceColor)
                 HStack{
                     Text("Size")

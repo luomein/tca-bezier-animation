@@ -12,32 +12,30 @@
 		8800998B293A2D9F007B85D0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */; };
 		880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 880099B3293A2E17007B85D0 /* ComposableArchitecture */; };
 		880099BA293AC6D3007B85D0 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 880099B9293AC6D3007B85D0 /* ContainerView.swift */; };
-		88467F2429594373003C8875 /* BezierTimeSeriesPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */; };
 		886764302943214200FC0167 /* tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8867642F2943214200FC0167 /* tests.swift */; };
 		886FB3AF2951724700712049 /* fastlane_snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FB3AE2951724700712049 /* fastlane_snapshot.swift */; };
 		886FB3B92951738800712049 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886FB3B82951738800712049 /* SnapshotHelper.swift */; };
 		886FB3BB29517E9900712049 /* Snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 886FB3BA29517E9900712049 /* Snapfile */; };
-		8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */; };
 		8882B1A1295019DF00136AD7 /* MultiLayerBezierCurveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */; };
-		889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */; };
-		889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */; };
 		88C04746294DCF260075DE44 /* SwiftUINavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 88C04745294DCF260075DE44 /* SwiftUINavigation */; };
 		88C0474F294DD48D0075DE44 /* ContainerLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C0474E294DD48D0075DE44 /* ContainerLayoutView.swift */; };
 		88C04751294DD58D0075DE44 /* ContainerReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C04750294DD58D0075DE44 /* ContainerReducer.swift */; };
 		88C04753294DDF860075DE44 /* PlottingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C04752294DDF860075DE44 /* PlottingView.swift */; };
 		88C04755294DEE1E0075DE44 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C04754294DEE1E0075DE44 /* SettingView.swift */; };
 		88D577DF2952D4070030FCB4 /* screenshots in Resources */ = {isa = PBXBuildFile; fileRef = 88D577DE2952D4070030FCB4 /* screenshots */; };
-		88D577E22952D79B0030FCB4 /* AppFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D577E12952D79B0030FCB4 /* AppFileManager.swift */; };
+		88D577E22952D79B0030FCB4 /* SnapShotJsonFileName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88D577E12952D79B0030FCB4 /* SnapShotJsonFileName.swift */; };
 		88D577E8295321100030FCB4 /* DefaultControlPoints.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D577E7295321100030FCB4 /* DefaultControlPoints.json */; };
 		88D577EE295328450030FCB4 /* DefaultBezier1stDrawingOption.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D577ED295328450030FCB4 /* DefaultBezier1stDrawingOption.json */; };
 		88D577F0295329D80030FCB4 /* DefaultBezier2ndDrawingOption.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D577EF295329D80030FCB4 /* DefaultBezier2ndDrawingOption.json */; };
 		88D577F229532A280030FCB4 /* DefaultBezier3rdDrawingOption.json in Resources */ = {isa = PBXBuildFile; fileRef = 88D577F129532A280030FCB4 /* DefaultBezier3rdDrawingOption.json */; };
+		88ED252A2960476C00DAE2AD /* MultiLayerBezierCurveReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88ED25292960476C00DAE2AD /* MultiLayerBezierCurveReducer.swift */; };
 		88F2B534295F0ECD007DEC2A /* ShareLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B533295F0ECD007DEC2A /* ShareLinkView.swift */; };
-		88F2B538295FD40D007DEC2A /* VariableSpeedTimer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B537295FD40D007DEC2A /* VariableSpeedTimer */; };
 		88F2B53A295FE7D4007DEC2A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B539295FE7D4007DEC2A /* TestView.swift */; };
 		88F2B53B295FE814007DEC2A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F2B539295FE7D4007DEC2A /* TestView.swift */; };
-		88F2B53E29600701007DEC2A /* MultipleTimeSeriesReducer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B53D29600701007DEC2A /* MultipleTimeSeriesReducer */; };
 		88F2B54129603495007DEC2A /* LuomeinSwiftBasicTools in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */; };
+		88F2B54429603FFF007DEC2A /* BezierTimeSeriesReducer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B54329603FFF007DEC2A /* BezierTimeSeriesReducer */; };
+		88F2B54729604294007DEC2A /* VariableSpeedTimer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B54629604294007DEC2A /* VariableSpeedTimer */; };
+		88F2B54A296042B6007DEC2A /* MultipleTimeSeriesReducer in Frameworks */ = {isa = PBXBuildFile; productRef = 88F2B549296042B6007DEC2A /* MultipleTimeSeriesReducer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,27 +61,24 @@
 		88009987293A2D9F007B85D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8800998A293A2D9F007B85D0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		880099B9293AC6D3007B85D0 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
-		88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesPopoverView.swift; sourceTree = "<group>"; };
 		8867642D2943214200FC0167 /* tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8867642F2943214200FC0167 /* tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tests.swift; sourceTree = "<group>"; };
 		886FB3AC2951724700712049 /* fastlane-snapshot.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fastlane-snapshot.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		886FB3AE2951724700712049 /* fastlane_snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fastlane_snapshot.swift; sourceTree = "<group>"; };
 		886FB3B82951738800712049 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		886FB3BA29517E9900712049 /* Snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
-		8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimerSeriesTraceView.swift; sourceTree = "<group>"; };
 		8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveView.swift; sourceTree = "<group>"; };
-		889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierTimeSeriesSampleView.swift; sourceTree = "<group>"; };
-		889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveReducer.swift; sourceTree = "<group>"; };
 		88C0474E294DD48D0075DE44 /* ContainerLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerLayoutView.swift; sourceTree = "<group>"; };
 		88C04750294DD58D0075DE44 /* ContainerReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerReducer.swift; sourceTree = "<group>"; };
 		88C04752294DDF860075DE44 /* PlottingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlottingView.swift; sourceTree = "<group>"; };
 		88C04754294DEE1E0075DE44 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		88D577DE2952D4070030FCB4 /* screenshots */ = {isa = PBXFileReference; lastKnownFileType = folder; path = screenshots; sourceTree = "<group>"; };
-		88D577E12952D79B0030FCB4 /* AppFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFileManager.swift; sourceTree = "<group>"; };
+		88D577E12952D79B0030FCB4 /* SnapShotJsonFileName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapShotJsonFileName.swift; sourceTree = "<group>"; };
 		88D577E7295321100030FCB4 /* DefaultControlPoints.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultControlPoints.json; sourceTree = "<group>"; };
 		88D577ED295328450030FCB4 /* DefaultBezier1stDrawingOption.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultBezier1stDrawingOption.json; sourceTree = "<group>"; };
 		88D577EF295329D80030FCB4 /* DefaultBezier2ndDrawingOption.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultBezier2ndDrawingOption.json; sourceTree = "<group>"; };
 		88D577F129532A280030FCB4 /* DefaultBezier3rdDrawingOption.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = DefaultBezier3rdDrawingOption.json; sourceTree = "<group>"; };
+		88ED25292960476C00DAE2AD /* MultiLayerBezierCurveReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiLayerBezierCurveReducer.swift; sourceTree = "<group>"; };
 		88F2B533295F0ECD007DEC2A /* ShareLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareLinkView.swift; sourceTree = "<group>"; };
 		88F2B539295FE7D4007DEC2A /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -93,11 +88,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88F2B54429603FFF007DEC2A /* BezierTimeSeriesReducer in Frameworks */,
 				88C04746294DCF260075DE44 /* SwiftUINavigation in Frameworks */,
-				88F2B53E29600701007DEC2A /* MultipleTimeSeriesReducer in Frameworks */,
 				88F2B54129603495007DEC2A /* LuomeinSwiftBasicTools in Frameworks */,
-				88F2B538295FD40D007DEC2A /* VariableSpeedTimer in Frameworks */,
 				880099B4293A2E17007B85D0 /* ComposableArchitecture in Frameworks */,
+				88F2B54729604294007DEC2A /* VariableSpeedTimer in Frameworks */,
+				88F2B54A296042B6007DEC2A /* MultipleTimeSeriesReducer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,11 +173,8 @@
 		885C4016294EA4EC00DE7143 /* tca-bezier-time-series-points */ = {
 			isa = PBXGroup;
 			children = (
-				889939F8294F639800EB84AF /* BezierTimeSeriesSampleView.swift */,
-				889939FA295001B300EB84AF /* MultiLayerBezierCurveReducer.swift */,
-				8882B19E295018BD00136AD7 /* BezierTimerSeriesTraceView.swift */,
 				8882B1A0295019DF00136AD7 /* MultiLayerBezierCurveView.swift */,
-				88467F2329594373003C8875 /* BezierTimeSeriesPopoverView.swift */,
+				88ED25292960476C00DAE2AD /* MultiLayerBezierCurveReducer.swift */,
 			);
 			path = "tca-bezier-time-series-points";
 			sourceTree = "<group>";
@@ -207,7 +200,7 @@
 		88D577E02952D7780030FCB4 /* codable */ = {
 			isa = PBXGroup;
 			children = (
-				88D577E12952D79B0030FCB4 /* AppFileManager.swift */,
+				88D577E12952D79B0030FCB4 /* SnapShotJsonFileName.swift */,
 				88D577E7295321100030FCB4 /* DefaultControlPoints.json */,
 				88D577ED295328450030FCB4 /* DefaultBezier1stDrawingOption.json */,
 				88D577EF295329D80030FCB4 /* DefaultBezier2ndDrawingOption.json */,
@@ -235,9 +228,10 @@
 			packageProductDependencies = (
 				880099B3293A2E17007B85D0 /* ComposableArchitecture */,
 				88C04745294DCF260075DE44 /* SwiftUINavigation */,
-				88F2B537295FD40D007DEC2A /* VariableSpeedTimer */,
-				88F2B53D29600701007DEC2A /* MultipleTimeSeriesReducer */,
 				88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */,
+				88F2B54329603FFF007DEC2A /* BezierTimeSeriesReducer */,
+				88F2B54629604294007DEC2A /* VariableSpeedTimer */,
+				88F2B549296042B6007DEC2A /* MultipleTimeSeriesReducer */,
 			);
 			productName = labPlayground;
 			productReference = 88009980293A2D9E007B85D0 /* tca-bezier-animation.app */;
@@ -314,9 +308,10 @@
 			packageReferences = (
 				880099B2293A2E17007B85D0 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				88C04744294DCF260075DE44 /* XCRemoteSwiftPackageReference "swiftui-navigation" */,
-				88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */,
-				88F2B53C29600701007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */,
 				88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */,
+				88F2B54229603FFF007DEC2A /* XCRemoteSwiftPackageReference "bezier-time-series-reducer" */,
+				88F2B54529604294007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */,
+				88F2B548296042B6007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */,
 			);
 			productRefGroup = 88009981293A2D9E007B85D0 /* Products */;
 			projectDirPath = "";
@@ -366,18 +361,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88467F2429594373003C8875 /* BezierTimeSeriesPopoverView.swift in Sources */,
-				8882B19F295018BD00136AD7 /* BezierTimerSeriesTraceView.swift in Sources */,
 				88F2B534295F0ECD007DEC2A /* ShareLinkView.swift in Sources */,
-				88D577E22952D79B0030FCB4 /* AppFileManager.swift in Sources */,
-				889939F9294F639800EB84AF /* BezierTimeSeriesSampleView.swift in Sources */,
+				88D577E22952D79B0030FCB4 /* SnapShotJsonFileName.swift in Sources */,
 				8882B1A1295019DF00136AD7 /* MultiLayerBezierCurveView.swift in Sources */,
 				88C0474F294DD48D0075DE44 /* ContainerLayoutView.swift in Sources */,
 				88C04753294DDF860075DE44 /* PlottingView.swift in Sources */,
 				880099BA293AC6D3007B85D0 /* ContainerView.swift in Sources */,
 				88C04751294DD58D0075DE44 /* ContainerReducer.swift in Sources */,
-				889939FB295001B300EB84AF /* MultiLayerBezierCurveReducer.swift in Sources */,
 				88C04755294DEE1E0075DE44 /* SettingView.swift in Sources */,
+				88ED252A2960476C00DAE2AD /* MultiLayerBezierCurveReducer.swift in Sources */,
 				88F2B53B295FE814007DEC2A /* TestView.swift in Sources */,
 				88009984293A2D9E007B85D0 /* TCABezierAnimationApp.swift in Sources */,
 			);
@@ -981,7 +973,23 @@
 				minimumVersion = 0.4.5;
 			};
 		};
-		88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */ = {
+		88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luomein/luomein-swift-basic-tools";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		88F2B54229603FFF007DEC2A /* XCRemoteSwiftPackageReference "bezier-time-series-reducer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luomein/bezier-time-series-reducer";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		88F2B54529604294007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/luomein/variable-speed-timer";
 			requirement = {
@@ -989,17 +997,9 @@
 				kind = branch;
 			};
 		};
-		88F2B53C29600701007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */ = {
+		88F2B548296042B6007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/luomein/multiple-time-series-reducer";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/luomein/luomein-swift-basic-tools";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -1018,20 +1018,25 @@
 			package = 88C04744294DCF260075DE44 /* XCRemoteSwiftPackageReference "swiftui-navigation" */;
 			productName = SwiftUINavigation;
 		};
-		88F2B537295FD40D007DEC2A /* VariableSpeedTimer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88F2B536295FD40D007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */;
-			productName = VariableSpeedTimer;
-		};
-		88F2B53D29600701007DEC2A /* MultipleTimeSeriesReducer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 88F2B53C29600701007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */;
-			productName = MultipleTimeSeriesReducer;
-		};
 		88F2B54029603495007DEC2A /* LuomeinSwiftBasicTools */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 88F2B53F29603495007DEC2A /* XCRemoteSwiftPackageReference "luomein-swift-basic-tools" */;
 			productName = LuomeinSwiftBasicTools;
+		};
+		88F2B54329603FFF007DEC2A /* BezierTimeSeriesReducer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F2B54229603FFF007DEC2A /* XCRemoteSwiftPackageReference "bezier-time-series-reducer" */;
+			productName = BezierTimeSeriesReducer;
+		};
+		88F2B54629604294007DEC2A /* VariableSpeedTimer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F2B54529604294007DEC2A /* XCRemoteSwiftPackageReference "variable-speed-timer" */;
+			productName = VariableSpeedTimer;
+		};
+		88F2B549296042B6007DEC2A /* MultipleTimeSeriesReducer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 88F2B548296042B6007DEC2A /* XCRemoteSwiftPackageReference "multiple-time-series-reducer" */;
+			productName = MultipleTimeSeriesReducer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
